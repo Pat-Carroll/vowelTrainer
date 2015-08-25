@@ -1,0 +1,38 @@
+<template name="home">
+  <h2>Welcome to the homepage!</h2>
+
+
+  {{#if currentUser}}
+  	<h3>You are logged in</h3>
+  	<div class="nav buttons">
+		<button class="btn setup" >Setup</button>
+		<button class="btn calibrate" disabled="true">Calibrate</button>
+		<button class="btn sentences" disabled="true">Sentences</button>
+		<button class="btn progress" disabled="true">Progress</button>
+	</div>
+
+	<div>
+		{{displayButtonMessage}}
+		<!-- TODO set up a warning system of messages to guide the user in setup -->
+	</div>
+
+<!-- 	{{#if userProfileEntered}}
+  		
+  		<a href="{{pathFor 'calibrate'}}">Calibrate</a>
+  		<a href="{{pathFor sentenceTrainer}}">Trainer</a>
+  	{{else}}
+  		<p>{{userProfileEntered}}</p>
+  		<p>cant click me yet</p>
+  	{{/if}}
+ -->
+  	
+
+  {{else}}
+  	<h3>Please log in to the site!</h3>
+
+
+  {{/if}}
+
+
+  
+</template>

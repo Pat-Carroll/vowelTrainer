@@ -1,0 +1,12 @@
+<template name="header">
+  <div class="header">
+    <h1>IFCASL Vowel Trainer System</h1>
+  </div>
+  {{> loginButtons}}
+  <hr/>
+  <div class="messages">
+    {{#each messages}}
+      <p class="message message-{{type}}">{{message}}</p>
+    {{/each}}
+  </div>
+</template>
