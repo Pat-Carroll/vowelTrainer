@@ -1,0 +1,13 @@
+<template name="recorderHandler">
+    <div id="record" hidden="true">
+        {{#if supportsMedia}}
+            {{onLoad}}
+            <button id="start-recording">Record</button>
+            <button id="stop-recording" disabled="true">Stop</button>
+            <div id="uploading" hidden="true">The video is converting and uploading</div>
+        {{else}}
+            Sorry - your browser does not support user media (microphone)
+        {{/if}}
+    </div>
+    <div id="media-error"><h3>Please enable the camera and microphone to record</h3></div>
+</template>
