@@ -26,45 +26,56 @@ var recording = false;
 var audioContext;
 var audioRecorder;
 
+
+// global variable for the current audio blob
+var currentAudioBlob;
+
 // function for requesting the media stream
 function setupMedia() {
-    if (supportsMedia()) {
-        audioContext = new AudioContext();
+    
+    audioContext = new AudioContext();
 
-        navigator.getUserMedia(
-            {
-                audio: true
-            },
-            function (localMediaStream) {
+    navigator.getUserMedia(
+        {
+            audio: true
+        },
+        function (localMediaStream) {
 
-                // setup audio recorder
-                var audioInput = audioContext.createMediaStreamSource(localMediaStream);
-				//the following code is to mute playback
-                // (so you don't get feedback)
-                var audioGain = audioContext.createGain();
-                audioGain.gain.value = 0;
-                audioInput.connect(audioGain);
-                audioGain.connect(audioContext.destination);
+            // setup audio recorder
+            var audioInput = audioContext.createMediaStreamSource(localMediaStream);
+			//the following code is to mute playback
+            // (so you don't get feedback)
+            var audioGain = audioContext.createGain();
+            audioGain.gain.value = 0;
+            audioInput.connect(audioGain);
+            audioGain.connect(audioContext.destination);
 
-                audioRecorder = new Recorder(audioInput);
-                mediaStream = localMediaStream;
-                mediaInitialized = true;
+            audioRecorder = new Recorder(audioInput);
+            mediaStream = localMediaStream;
+            mediaInitialized = true;
 
-                document.getElementById('uploading').hidden = true;
-                document.getElementById('media-error').hidden = true;
-                document.getElementById('record').hidden = false;
-            },
-            function (e) {
-                console.log('microphone not initialized: ', e);
-                document.getElementById('media-error').hidden = false;
-            }
-        );
-    }
+            document.getElementById('uploading').hidden = true;
+            document.getElementById('media-error').hidden = true;
+            document.getElementById('record').hidden = false;
+        },
+        function (e) {
+            console.log('microphone not initialized: ', e);
+            document.getElementById('media-error').hidden = false;
+        }
+    );
+    
 };
 
 
 // exposed template helpers
-Template.recorderHandler.supportsMedia = supportsMedia;
+Template.recorderHandler.helpers({
+    'supportsMedia': function(){
+        return !!(navigator.getUserMedia || navigator.webkitGetUserMedia ||
+        navigator.mozGetUserMedia || navigator.msGetUserMedia);
+    }
+
+
+}) 
 
 Template.recorderHandler.onLoad = function () {
     setupMedia();
@@ -124,20 +135,41 @@ function completeRecording() {
     document.getElementById('uploading').hidden = false;
 
     audioRecorder.exportWAV(function (audioBlob) {
-        // save to the db
-        BinaryFileReader.read(audioBlob, function (err, fileInfo) {
-            UserAudios.insert({
-                userId: user._id,
-                audio: fileInfo,
-                save_date: Date.now()
-            });
-        });
-        console.log("Audio uploaded");
+
+        var url = URL.createObjectURL(audioBlob);
+        var li = document.createElement('li');
+        var au = document.createElement('audio');
+        
+
+        au.controls = true;
+        au.src = url;
+        li.appendChild(au);
+        recordingslist.appendChild(li);
+        // save the blob to a global variable
+
+        currentAudioBlob = audioBlob;
+
+        var fileObj = UserAudio.insert(audioBlob);
+        
     });
 
-    // stop the stream & redirect to show the video
-    mediaStream.stop();
-    //Router.go('showVideo', { _id: user._id });
+    //uploadRecording();
+}
+
+function uploadRecording() {
+
+    var savedate = Date.now();
+
+
+    var fileObj = UserAudio.insert(currentAudioBlob);
+
+    CardinalVowels.update({ owner: Meteor.userId() },
+   {
+     $set: { u_values_path: fileObj, timestamp: savedate },
+     $currentDate: { lastModified: true }
+   });
+
+console.log("Audio uploaded");
 }
 
 

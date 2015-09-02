@@ -10,3 +10,5 @@ accounts-ui
 iron:router
 autopublish
 insecure
+cfs:filesystem
+cfs:standard-packages

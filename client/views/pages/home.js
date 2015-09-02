@@ -1,9 +1,17 @@
 
 var buttonMessage = "";
 
+Template.home.onCreated(function(){
+
+	var myUserProfile = PersonProfiles.findOne({owner:Meteor.userId()});
+});
+
 
 Template.home.onRendered (function () {
-	if (PersonProfiles.findOne({owner: Meteor.userId()}) != null) {
+
+	var myUserProfile = PersonProfiles.findOne({owner:Meteor.userId()});
+
+	if (myUserProfile) {
 		$('.btn.calibrate').prop('disabled', false);
 		buttonMessage = "Please setup user info first";
 	}
