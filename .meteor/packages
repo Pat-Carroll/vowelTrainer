@@ -12,3 +12,4 @@ autopublish
 insecure
 cfs:filesystem
 cfs:standard-packages
+semantic:ui-css

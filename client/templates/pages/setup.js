@@ -18,7 +18,6 @@ Template.setup.events = {
       flash('Please fill in all fields');
     }else{
       PersonProfiles.insert(user);
-      flash('');
       CardinalVowels.insert({owner: Meteor.userId()});
       Sentences.insert({owner: Meteor.userId()});
       Router.go('/');
