@@ -1,3 +1,6 @@
 <template name="calibrate">
+   <h1>Vowel: {{vowel}}</h1>
     {{> recorderHandler}}
+    <div class="ui button large {{#unless getCurrRecording}}disabled{{/unless}} js-nextStep">Next</div>
+
 </template>
