@@ -1,11 +1,26 @@
 <template name="recorderHandler">
     <div id="record" hidden="true">
         {{#if supportsMedia}}
-            {{onLoad}}
-            <button id="start-recording">Record</button>
-            <button id="stop-recording" disabled="true">Stop</button>
-            <div id="uploading" hidden="true">The video is converting and uploading</div>
-            <ul id="recordingslist"></ul>
+            {{setup}}
+            <div class="ui horizontal labeled icon buttons">
+                <button class="ui button" id="start-recording">
+                    <i class="unmute icon"></i>
+                    Record
+                </button>
+                <button class="ui disabled button" id="stop-recording">
+                    <i class="stop icon"></i>
+                    Stop
+                </button>
+                <button class="ui disabled button" id="replay-recording">
+                    <i class="video play outline icon"></i>
+                    Replay
+                </button>
+
+            </div>
+            <div class="ui hidden" id="recordings"></div>
+
+            <div id="uploading" hidden="true">The audio is converting and uploading</div>
+
         {{else}}
             Sorry - your browser does not support user media (microphone)
         {{/if}}

@@ -27,9 +27,6 @@ var audioContext;
 var audioRecorder;
 
 
-// global variable for the current audio blob
-var currentAudioBlob;
-
 // function for requesting the media stream
 function setupMedia() {
     
@@ -64,7 +61,7 @@ function setupMedia() {
         }
     );
     
-};
+}
 
 
 // exposed template helpers
@@ -72,14 +69,16 @@ Template.recorderHandler.helpers({
     'supportsMedia': function(){
         return !!(navigator.getUserMedia || navigator.webkitGetUserMedia ||
         navigator.mozGetUserMedia || navigator.msGetUserMedia);
+    },
+
+    'setup': function() {
+        setupMedia();
+        return;
     }
 
 
-}) 
+});
 
-Template.recorderHandler.onLoad = function () {
-    setupMedia();
-};
 
 
 Template.recorderHandler.events = {
@@ -92,19 +91,35 @@ Template.recorderHandler.events = {
             console.log("\tNO USER LOGGED IN");
             return;
         }
-        document.getElementById('stop-recording').disabled = false;
-        document.getElementById('start-recording').disabled = true;
+        $('#stop-recording').removeClass('disabled');
+        $('#start-recording').addClass('disabled');
+        if($('#replay-recording').prop('disabled') == false){
+            $('#replay-recording').addClass('disabled');
+        }
         startRecording();
     },
     'click #stop-recording': function (e) {
         console.log("click #stop-recording");
         e.preventDefault();
 
-        document.getElementById('stop-recording').disabled = true;
-        document.getElementById('start-recording').disabled = false;
+
+        $('#stop-recording').addClass('disabled');
+        $('#start-recording').removeClass('disabled');
+        $('#replay-recording').removeClass('disabled');
+        if($('#playback-recording')) {
+            $('#playback-recording').remove();
+        }
         stopRecording();
         completeRecording();
+    },
+
+    'click #replay-recording': function (e) {
+        e.preventDefault();
+        console.log("click #replay-recording");
+        $('.playbackRecording.current')[0].play();
+
     }
+
 };
 
 
@@ -125,35 +140,27 @@ function completeRecording() {
     audioRecorder.stop();
 
     var user = Meteor.user();
-    if (!user) {
-        // must be the logged in user
-        console.log("completeRecording - NO USER LOGGED IN");
-        return;
-    }
+
     console.log("completeRecording: " + user._id);
 
-    document.getElementById('uploading').hidden = false;
 
     audioRecorder.exportWAV(function (audioBlob) {
 
         var url = URL.createObjectURL(audioBlob);
-        var li = document.createElement('li');
+        console.log(url);
+        Session.set('currentRecording', url);
+
+        $('.playbackRecording.current').removeClass('current');
         var au = document.createElement('audio');
-        
-
-        au.controls = true;
         au.src = url;
-        li.appendChild(au);
-        recordingslist.appendChild(li);
-        // save the blob to a global variable
+        au.className = 'playbackRecording current';
 
-        currentAudioBlob = audioBlob;
+        $('#recordings')[0].appendChild(au);
 
-        var fileObj = UserAudio.insert(audioBlob);
-        
+
     });
 
-    //uploadRecording();
+    audioRecorder.clear();
 }
 
 function uploadRecording() {
@@ -194,7 +201,7 @@ var BinaryFileReader = {
 
         reader.readAsArrayBuffer(file);
     }
-}
+};
 
 
 
