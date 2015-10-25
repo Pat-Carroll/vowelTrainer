@@ -1,33 +1,11 @@
 
-var buttonMessage = "";
-
 Template.home.onCreated(function(){
 
-	var myUserProfile = PersonProfiles.findOne({owner:Meteor.userId()});
+
 });
 
 
 Template.home.onRendered (function () {
-
-
-
-	if (Session.get('canCalibrate')) {
-		$('.calibrate').prop('disabled', false);
-		buttonMessage = "Please calibrate the vowel system";
-	}
-
-
-	if (Session.get('canVowelTrain')) {
-		$('.vowelTrainer').prop('disabled', false);
-		buttonMessage = "Please try training your pronounciation";
-	}
-
-
-	if (Session.get('canViewProgress')) {
-		$('.progress').prop('disabled', false);
-		buttonMessage = "You can recalibrate your vowels, train your pronounciation, or view your progress";
-	}
-
 
 });
 
@@ -35,11 +13,14 @@ Template.home.onRendered (function () {
 Template.home.helpers ({
 
 
-	'displayButtonMessage': function(){
-		if ($('.btn.calibrate').prop('disabled') == true) {
-			console.log($('.btn.calibrate').prop('disabled'));
-			flash("Please setup user info first");
-		}
+	canCalibrate: function(){
+		return Session.get("canCalibrate");
+	},
+	canVowelTrain: function(){
+		return Session.get("canVowelTrain");
+	},
+	canViewProgress : function(){
+		return Session.get("canViewProgress");
 	}
 
 });
@@ -47,22 +28,22 @@ Template.home.helpers ({
 Template.home.events ({
 	'click .button.setup': function (event) {
 		event.preventDefault();
-		Router.go('setup');
+		Router.go('/setup');
 	},
 
 	'click #calibrate': function (event) {
 		event.preventDefault();
-		Router.go('calibrate');
+		Router.go('/calibrate/a');
 	},
 
 	'click #vowelTrainer': function (event) {
 		event.preventDefault();
-		Router.go('sentences');
+		Router.go('/sentences/0');
 	},
 
 	'click #progress': function (event) {
 		event.preventDefault();
-		Router.go('progress');
+		Router.go('/progress');
 	},
 
 });

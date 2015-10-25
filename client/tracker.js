@@ -10,22 +10,25 @@ Tracker.autorun(function() {
 
     var userProfile = PersonProfiles.findOne({owner:Meteor.userId()});
 
-    if (userProfile) {
+    if (!userProfile) {
+        Router.go('/');
+        return;
+    }else{
         Session.set('canCalibrate', true);
         console.log('set session variable canCalibrate to true');
-        return;
     }
 
-    var vowelCalibrations = CardinalVowels.findOne({owner: Meteor.userId()});
+    var vowelCalibrations = CardinalVowels.findOne({_id: userProfile.cardinalVowels});
 
-    if (vowelCalibrations) {
+    if (vowelCalibrations.sampleFileA && vowelCalibrations.sampleFileI && vowelCalibrations.sampleFileU) {
         Session.set('canVowelTrain', true);
-
+    } else
+    {
         return;
     }
 
-    var sentences = Sentences.findOne({owner: Meteor.userId()});
-
+    var sentences = Sentences.findOne({_id: userProfile.sentences});
+    //Todo count sentences ;)
     if (sentences) {
         Session.set('canViewProgress', true);
         return;

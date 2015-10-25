@@ -1,3 +1,8 @@
 <template name="sentences">
- This is the sentences template.
+    <div class="sentence">
+        Please read the following sentence:
+        {{getSentence}}
+    </div>
+    {{> recorderHandler}}
+    <div class="ui button large {{#unless getCurrRecording}}disabled{{/unless}} js-nextStep">Next</div>
 </template>

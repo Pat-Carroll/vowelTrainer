@@ -6,13 +6,27 @@
   	<h3>You are logged in</h3>
   	<div class="ui container navButtons">
 		<button class="ui button setup" id="setup">Setup</button>
-		<button class="ui button calibrate" id="calibrate" disabled="true">Calibrate</button>
-		<button class="ui button vowelTrainer" id="vowelTrainer" disabled="true">Vowel Trainer</button>
-        <button class="ui button prog" id="progress" disabled="true">Progress</button>
+		<button class="ui button calibrate {{#unless canCalibrate }} disabled {{/unless}} " id="calibrate" >Calibrate</button>
+		<button class="ui button vowelTrainer {{#unless canVowelTrain }}disabled{{/unless}}" id="vowelTrainer" >Vowel Trainer</button>
+        <button class="ui button prog {{#unless canViewProgress }}disabled{{/unless}}" id="progress" >Progress</button>
 	</div>
 
 	<div>
-		{{displayButtonMessage}}
+        <!--Sorry about the if thing but there is no else if -.- -->
+		{{#if canCalibrate}}
+            Please calibrate the system
+           {{else }}
+            {{#if canViewProgress}}
+                Please train vowels now!
+            {{else }}
+                {{#if canCalibrate}}
+                    Please proceed to the results
+                {{else }}
+                    Please setup the System first!
+                {{/if}}
+            {{/if}}
+            {{/if}}
+
 		<!-- TODO set up a warning system of messages to guide the user in setup -->
 	</div>
 

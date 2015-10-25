@@ -145,18 +145,21 @@ function completeRecording() {
 
 
     audioRecorder.exportWAV(function (audioBlob) {
+        var fileReader = new FileReader();
 
-        var url = URL.createObjectURL(audioBlob);
-        console.log(url);
-        Session.set('currentRecording', url);
+        fileReader.onload = function(ev) {
+            var url = fileReader.result;
+            console.log(url);
+            Session.set('currentRecording', url);
 
-        $('.playbackRecording.current').removeClass('current');
-        var au = document.createElement('audio');
-        au.src = url;
-        au.className = 'playbackRecording current';
+            $('.playbackRecording.current').removeClass('current');
+            var au = document.createElement('audio');
+            au.src = url;
+            au.className = 'playbackRecording current';
 
-        $('#recordings')[0].appendChild(au);
-
+            $('#recordings')[0].appendChild(au);
+        }
+        fileReader.readAsDataURL(audioBlob);
 
     });
 
