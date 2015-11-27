@@ -77,9 +77,10 @@ sed -f $SCRIPTS/utf8txt2utf8.sed $TMPDIR/file.mlffus > $TMPDIR/file.mlf
 /bin/rm -f $RES
 $SCRIPTS/domlf2praat.pl -mlf $TMPDIR/file.mlf -praat $RES -shift 12
 
+echo -n $MLF
 cp $TMPDIR/file.mlf $MLF
 
-# /bin/rm -fr $TMPDIR
+/bin/rm -fr $TMPDIR
 
 
 
