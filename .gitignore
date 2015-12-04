@@ -1,5 +1,7 @@
+/public/Scripts/HTK_forced_align/userAudio*
 .DS_Store
 *.sublime-project
 *.sublime-workspace
 .meteor/.id
 .idea/*
+/public/Sentences/sentence*
