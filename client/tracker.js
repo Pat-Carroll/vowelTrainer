@@ -5,6 +5,7 @@ Tracker.autorun(function() {
 
     if (!userId){
         Router.go('home');
+        Session.keys = {};
         return;
     }
 
@@ -15,7 +16,7 @@ Tracker.autorun(function() {
         return;
     }else{
         Session.set('canCalibrate', true);
-        console.log('set session variable canCalibrate to true');
+        //console.log('set session variable canCalibrate to true');
     }
 
     var vowelCalibrations = CardinalVowels.findOne({_id: userProfile.cardinalVowels});
@@ -33,5 +34,5 @@ Tracker.autorun(function() {
         Session.set('canViewProgress', true);
         return;
     }
-
+//TODO rework tracker now that there are two different representations of sentences.
 });

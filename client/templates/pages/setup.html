@@ -1,39 +1,61 @@
 <template name="setup">
+    <div class="ui two column centered very padded grid">
+        <div class="ui compact padded segment">
 
-	<div class="control-group">
-      <label>Benutzername</label>
-      <div class="controls">
-      	<input id="username" name="username" type="text" value="" />
-      </div>
+
+            <div class="username">
+              <label>Benutzername</label>
+                <br>
+                  <div class="ui input">
+                    <input id="username" name="username" type="text" value="" />
+                  </div>
+            </div>
+
+
+            <div class="age">
+              <label>Alter</label>
+                <br>
+                  <select class="ui dropdown" id="age">
+                      <option value="1">15-19</option>
+                      <option value="2">20-24</option>
+                      <option value="3">25-29</option>
+                      <option value="4">30-34</option>
+                      <option value="5">35-39</option>
+                      <option value="6">40-44</option>
+                      <option value="7">45-49</option>
+                      <option value="8">50-54</option>
+                      <option value="9">55-59</option>
+                      <option value="10">60-64</option>
+                      <option value="11">65+</option>
+                  </select>
+            </div>
+
+
+            <div class="sex">
+              <label>Geschlecht</label>
+                <br>
+                    <select class="ui dropdown" id="gender">
+                      <option value="Adult male">Mann</option>
+                      <option value="Adult female">Frau</option>
+                    </select>
+            </div>
+
+
+
+            <div class="motherLang">
+              <label>Muttersprache</label>
+                <br>
+                  <div class="ui input">
+                    <input id="motherLang" name="motherLang" type="text" value="" />
+                  </div>
+            </div>
+
+            <div class="ui horizontal divider"></div>
+
+            <div class="ui blue button" id="submit">
+              Submit
+            </div>
+
+        </div>
     </div>
-
-
-	<div class="control-group">
-	  <label>Alter</label>
-	  <div class="controls">
-	  	<input id="age" name="age" type="number" min="10" max="100" value="20"/>
-	  </div>
-	</div>
-
-	<div class="control-group">
-	  <label>Geschlecht</label>
-	  <div class="controls">
-	    <select id="gender" name="gender" type="text">
-	      <option>Mann</option>
-	      <option>Frau</option>
-	    </select>
-	  </div>
-	</div>
-
-    <div class="control-group">
-      <label>Muttersprache</label>
-      <div class="controls">
-      	<input id="motherLang" name="motherLang" type="text" value="" />
-      </div>
-    </div>
-
-    <div class="form-actions">
-      <input type="submit" class="button" value="submit" />
-    </div> 
-	
 </template>

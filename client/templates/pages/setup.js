@@ -1,6 +1,7 @@
 Template.setup.events = {
-    'click input[type=submit]': function (event) {
-        //event.preventDefault();
+    'click #submit': function (event) {
+        event.preventDefault();
+
 
         var user = {
             owner: Meteor.userId(),
@@ -18,9 +19,9 @@ Template.setup.events = {
         } else {
             //TODO handle already registered users!!!
             var cardVowels = CardinalVowels.insert({owner: Meteor.userId()});
-            var sentences = Sentences.insert({owner: Meteor.userId()});
+            var sentProductions = SentenceProductions.insert({owner: Meteor.userId()});
             user.cardinalVowels = cardVowels;
-            user.sentences = sentences;
+            user.sentenceProductions = sentProductions;
             PersonProfiles.insert(user);
             Router.go('/');
         }

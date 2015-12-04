@@ -12,7 +12,9 @@ Template.home.onRendered (function () {
 
 Template.home.helpers ({
 
-
+	hasSetup: function() {
+		return !!(PersonProfiles.findOne({owner:Meteor.userId()}));
+	},
 	canCalibrate: function(){
 		return Session.get("canCalibrate");
 	},
