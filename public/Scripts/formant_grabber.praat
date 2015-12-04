@@ -4,11 +4,9 @@ form Create a slow version
 	sentence open_file_path ~/Audio/uploads/userAudio-2sb2nx8iAJW6Qntqd-undefined
 	real start_time 0
 	real end_time -1 
-	optionmenu GenderAge 1
-		option Adult male
-		option Adult female
-		option Child male
-		option Child femalse
+	choice Gender: 1
+		button Adult male
+		button Adult female
 endform
 
 
@@ -16,15 +14,9 @@ endform
 # Setting the max frequency for Formant Detection based on Gender and Age
 freqUpperLimit = 5000
 
-if genderAge = 2
+if gender = 2
 	freqUpperLimit = 5500
-
-elif genderAge = 3
-	freqUpperLimit = 8000
-elif genderAge = 4
-	freqUpperLimit = 8000
-else
-	freqUpperLimit = 5000	
+	
 endif
 
 
