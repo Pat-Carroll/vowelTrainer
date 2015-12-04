@@ -1,9 +1,4 @@
 
-// verify if the browser supports user media
-function supportsMedia() {
-    return !!(navigator.getUserMedia || navigator.webkitGetUserMedia ||
-        navigator.mozGetUserMedia || navigator.msGetUserMedia);
-}
 
 
 // cross browser support for getUserMedia
@@ -147,7 +142,7 @@ function completeRecording() {
     audioRecorder.exportWAV(function (audioBlob) {
         var fileReader = new FileReader();
 
-        fileReader.onload = function(ev) {
+        fileReader.onload = function() {
             var url = fileReader.result;
             console.log(url);
             Session.set('currentRecording', url);
@@ -166,45 +161,9 @@ function completeRecording() {
     audioRecorder.clear();
 }
 
-function uploadRecording() {
-
-    var savedate = Date.now();
 
 
-    var fileObj = UserAudio.insert(currentAudioBlob);
 
-    CardinalVowels.update({ owner: Meteor.userId() },
-   {
-     $set: { u_values_path: fileObj, timestamp: savedate },
-     $currentDate: { lastModified: true }
-   });
-
-console.log("Audio uploaded");
-}
-
-
-var BinaryFileReader = {
-    read: function (file, callback) {
-        var reader = new FileReader;
-
-        var fileInfo = {
-            name: file.name,
-            type: file.type,
-            size: file.size,
-            file: null
-        }
-
-        reader.onload = function () {
-            fileInfo.file = new Uint8Array(reader.result);
-            callback(null, fileInfo);
-        }
-        reader.onerror = function () {
-            callback(reader.error);
-        }
-
-        reader.readAsArrayBuffer(file);
-    }
-};
 
 
 
