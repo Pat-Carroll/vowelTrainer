@@ -6,7 +6,7 @@ setenv LC_NUMERIC "POSIX"
 # install csh perl and sox
 
 # set directory of alignement tool *** change the directory to where the software is
-set DIRTOOL = /Users/patrick/Saarland_Documents/Saarland_Masters2015/alignment/Carroll
+set DIRTOOL = /Users/patrick/Saarland_Documents/Saarland_Masters2015/Meteor_Site/Vowel_train_scaffold/public/Scripts/HTK_forced_align
 
 # do not forget to compilie generation_gram.c    
 # cc -O generation_gram.c  -o generation_gram
