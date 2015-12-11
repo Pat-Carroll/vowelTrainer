@@ -14,8 +14,7 @@ if (Meteor.isServer){
                 //    focus_vowel: "",
                 //    focus_Vow_Num: 0,
                 //    focus_word: ""
-                //    focus_word_start: 0,
-                //    focus_word_end: 0
+                //    focus_word_Num: 0
                 //},
                 {number: iter++,
                     text: "abend",
@@ -23,8 +22,8 @@ if (Meteor.isServer){
                     focus_vowel: "a:",
                     focus_Vow_Num: 2,
                     focus_word: "Q Q_ a: b b_ @ n t t_",
-                    focus_word_start: 0,
-                    focus_word_end: 8
+                    focus_word_Num: 0
+
                 },
                 {number: iter++,
                     text: "geburtstag",
@@ -32,8 +31,7 @@ if (Meteor.isServer){
                     focus_vowel: "a:",
                     focus_Vow_Num: 10,
                     focus_word: "g g_ @ b b_ Uer ts ts_ t t_ a: k k_",
-                    focus_word_start: 0,
-                    focus_word_end: 12
+                    focus_word_Num: 0
                 },
                 {number: iter++,
                     text: "kahn",
@@ -41,17 +39,24 @@ if (Meteor.isServer){
                     focus_vowel: "a:",
                     focus_Vow_Num: 2,
                     focus_word: "k k_ a: n",
-                    focus_word_start: 0,
-                    focus_word_end: 3
+                    focus_word_Num: 0
                 },
                 {number: iter++,
-                    text: "kan",
+                    text: "kann",
                     phon_transcription: "k k_ a n",
                     focus_vowel: "a",
                     focus_Vow_Num: 2,
                     focus_word: "k k_ a n",
-                    focus_word_start: 0,
-                    focus_word_end: 3
+                    focus_word_Num: 0
+                },
+
+                {number: iter++,
+                    text: "abend geburtstag kahn",
+                    phon_transcription: "Q Q_ a: b b_ @ n t t_ g g_ @ b b_ Uer ts ts_ t t_ a: k k_ k k_ a: n",
+                    focus_vowel: "a:",
+                    focus_Vow_Num: 2,
+                    focus_word: "Q Q_ a: b b_ @ n t t_",
+                    focus_word_Num: 0
                 }
 
 

@@ -5,3 +5,5 @@
 .meteor/.id
 .idea/*
 /public/Sentences/sentence*
+/.temp/*.textgrid
+/.temp/*.txt
