@@ -28,7 +28,7 @@ Tracker.autorun(function() {
         return;
     }
 
-    var sentences = Sentences.findOne({_id: userProfile.sentences});
+    var sentences = SentenceProductions.findOne({_id: userProfile.sentenceProductions});
     //Todo count sentences ;)
     if (sentences) {
         Session.set('canViewProgress', true);

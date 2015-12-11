@@ -40,7 +40,7 @@ Template.home.events ({
 
 	'click #vowelTrainer': function (event) {
 		event.preventDefault();
-		Router.go('/sentences/0');
+		Router.go('/sentence_trainer/0');
 	},
 
 	'click #progress': function (event) {

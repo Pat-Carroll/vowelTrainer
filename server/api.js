@@ -79,9 +79,10 @@ Meteor.methods({
         }
 
     },
+
     'saveSentenceSample': function (sentenceNum, audio) {
 
-        console.log(sentenceID);
+        console.log("sentence Number : " + sentenceNum);
 
         //Before anything else can happen, a file must be created on the File System so scripts can manipulate it.
         UserAudio.insert(audio, function (err, fileObj){
@@ -91,52 +92,22 @@ Meteor.methods({
             else {
 
                 var audioFileName = "userAudio-" + fileObj._id + "-undefined";
-                var sentencePath = publicPath + "Sentences/sentence" + Sentences.findOne({number: sentenceNum}) + ".txt";
+                var sentencePath = publicPath + "Sentences/sentence" + sentenceNum + ".txt";
                 var tempPath = publicPath + "Temp/" + Meteor.userId();
+                console.log("AudioFilePath: " +audioFilePath + audioFileName);
+                console.log("Sentencepath: " + sentencePath);
+                console.log("Temppath: " + tempPath);
 
                 // This function is called after a file object is stored in the CFS file system (On server)
                 function afterInsertFA(fileObjT) {
 
-
                     if (fileObjT._id != fileObj._id) {
                         return;
                     }
 
-
                     var spawn = Npm.require('child_process').spawn;
 
-                    var command = spawn('perl', [publicPath + '/Scripts/HTK_forced_align/doalign_kiel_2pass.pl', audioFilePath + audioFileName, sentencePath, tempPath + ".textgrid", tempPath + ".mlf"]);
-
-                    command.stderr.on('data', function (data) {
-                        console.log('stderr:' + data);
-                    });
-                    command.on('exit', function (code) {
-                        console.log(Assets.getText(tempPath + ".mlf"));
-                    });
-
-                    // After the function does it's script calling and is finished.  It removes the callback from the event queue.
-                    UserAudio.removeListener("stored", afterInsert);
-
-                }
-
-                function afterInsertFormant(fileObjT) {
-
-
-
-                    console.log ("fileobjT: " + fileObjT._id);
-                    console.log ("Fileobj: " + fileObj._id);
-                    if (fileObjT._id != fileObj._id) {
-                        return;
-                    }
-
-
-                    var audioFileName = "userAudio-" + fileObj._id + "-undefined";
-
-                    //console.log("Vowel: " + vowel + " added" + xxx++ + " with Id: " + fileObj._id);
-
-
-                    var spawn = Npm.require('child_process').spawn;
-                    var command = spawn('/Applications/Praat.app/Contents/MacOS/Praat', [publicPath +'/Scripts/formant_grabber.praat', audioFilePath + audioFileName, '1.16', '1.23', 'Adult male']);
+                    var command = spawn('perl', [publicPath + '/Scripts/HTK_forced_align/doalign_kiel_2pass.pl', audioFilePath + audioFileName, sentencePath, tempPath + ".textgrid", tempPath + ".txt"]);
 
                     command.stdout.on('data', function (data) {
                         console.log('stdout:' + data);
@@ -144,17 +115,21 @@ Meteor.methods({
 
                     command.stderr.on('data', function (data) {
                         console.log('stderr:' + data);
+
                     });
                     command.on('exit', function (code) {
-                        console.log('child process exited with code: ' + code);
+
+                        console.log("Forced Alignment done?");
+
                     });
 
                     // After the function does it's script calling and is finished.  It removes the callback from the event queue.
-                    UserAudio.removeListener("stored", afterInsert);
+                    UserAudio.removeListener("stored", afterInsertFA);
 
                 }
-                // The function is defiend above, is triggered by a "stored" event from CFS,  and gets called here.
-                UserAudio.on("stored", afterInsertFA);
+            // The function is defiend above, is triggered by a "stored" event from CFS,  and gets called here.
+
+            UserAudio.on("stored", afterInsertFA);
 
             }
         });
