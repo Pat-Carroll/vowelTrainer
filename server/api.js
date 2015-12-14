@@ -3,6 +3,7 @@
 var baseAppPath = process.env.PWD;
 var audioFilePath = baseAppPath + "/.meteor/local/cfs/files/userAudio/";
 var publicPath = baseAppPath + "/public/";
+var start;
 
 Meteor.methods({
     'saveCalibrationVowel': function (vowel, audio) {
@@ -81,7 +82,7 @@ Meteor.methods({
     },
 
     'saveSentenceSample': function (sentenceNum, audio) {
-
+        start = new Date();
         console.log("sentence Number : " + sentenceNum);
 
         //Before anything else can happen, a file must be created on the File System so scripts can manipulate it.
@@ -240,8 +241,10 @@ function formantAnalysis (textGrid, sentenceNum, fileObj) {
                     word_end: targetWord.xmax,
                     word_length: targetWord.xmax - targetWord.xmin
                 })
-        }
 
+        }
+        var time = new Date() - start;
+        console.log("Timer " +  time);
     }));
 
 
