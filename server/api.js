@@ -6,82 +6,8 @@ var publicPath = baseAppPath + "/public/";
 var start;
 
 Meteor.methods({
-    'saveCalibrationVowel': function (vowel, audio) {
-        //Todo do some script calling etc.
 
-        console.log(vowel);
-        var userProfile = PersonProfiles.findOne({owner: Meteor.userId()});
-        console.log("gender" + userProfile.gender);
-
-        //Before anything else can happen, a file must be created on the File System so scripts can manipulate it.
-        var sampleId = UserAudio.insert(audio, function (err, fileObj){
-            if (err){
-                console.log(err);
-            }
-            else {
-
-
-                    // This function is called after a file object is stored in the CFS file system (On server)
-                    function afterInsert(fileObjT) {
-
-
-                            if (fileObjT._id != fileObj._id) {
-                                return;
-                            }
-
-
-                            var audioFileName = "userAudio-" + fileObj._id + "-undefined";
-
-                            //console.log("Vowel: " + vowel + " added" + xxx++ + " with Id: " + fileObj._id);
-
-
-                            var spawn = Npm.require('child_process').spawn;
-                            var command = spawn('/Applications/Praat.app/Contents/MacOS/Praat', [publicPath +'/Scripts/formant_grabber.praat', audioFilePath + audioFileName, '1.16', '1.23', userProfile.gender]);
-
-                            command.stdout.on('data', function (data) {
-                                console.log('stdout:' + data);
-                            });
-
-                            command.stderr.on('data', function (data) {
-                                console.log('stderr:' + data);
-                            });
-                            command.on('exit', function (code) {
-                                console.log('child process exited with code: ' + code);
-                            });
-
-                            // After the function does it's script calling and is finished.  It removes the callback from the event queue.
-                            UserAudio.removeListener("stored", afterInsert);
-
-                        }
-                // The function is defiend above, is triggered by a "stored" event from CFS,  and gets called here.
-                UserAudio.on("stored", afterInsert);
-
-                }
-        });
-
-
-
-        //Todo save stuff in userProfile
-
-        console.log("Vowel: " + vowel + " added for "+userProfile.username+"! " + sampleId._id);
-        switch (vowel) {
-            case 'a':
-                CardinalVowels.update({_id: userProfile.cardinalVowels}, {$set: {sampleFileA: sampleId._id}});
-                break;
-            case 'i':
-                CardinalVowels.update({_id: userProfile.cardinalVowels}, {$set: {sampleFileI: sampleId._id}});
-                break;
-            case 'u':
-                CardinalVowels.update({_id: userProfile.cardinalVowels}, {$set: {sampleFileU: sampleId._id}});
-                break;
-            default :
-                throw new Meteor.Error("Illegal vowel!");
-                break;
-        }
-
-    },
-
-    'saveSentenceSample': function (sentenceNum, audio) {
+    'saveSentenceSample': function (sentenceNum, audio, type) {
         start = new Date();
         console.log("sentence Number : " + sentenceNum);
 
@@ -122,7 +48,7 @@ Meteor.methods({
                     command.on('exit', Meteor.bindEnvironment(function (code) {
                         console.log("Forced Alignment done");
                         var textGrid = extractFAdata(tempPath + ".textgrid");
-                        formantAnalysis(textGrid, sentenceNum, fileObj);
+                        formantAnalysis(textGrid, sentenceNum, fileObj,type);
 
 
 
@@ -154,7 +80,7 @@ function extractFAdata (datapath) {
 
 };
 
-function formantAnalysis (textGrid, sentenceNum, fileObj) {
+function formantAnalysis (textGrid, sentenceNum, fileObj,type) {
 
     console.log("beginning Formant Anlaysis:");
 
@@ -221,19 +147,21 @@ function formantAnalysis (textGrid, sentenceNum, fileObj) {
                 {
                     owner: Meteor.userId(),
                     sentenceId: sentenceNum,
+                    type: type,
                     timestamp: new Date(),
 
                     sentenceTextGrid: textGrid,
                     recordingPath: audioFilePath + audioFileName,
+                    recordingId: fileObj._id,
 
                     phone: currentSentence.focus_vowel,
                     pho_start: targetVowel.xmin,
                     pho_end: targetVowel.xmax,
                     pho_length: targetVowel.xmax - targetVowel.xmin,
 
-                    f1_avg: formantData[1], // averaged center quadrile of Formant readings in the center 25% of vowel duration.
-                    f2_avg: formantData[2], // averaged center quadrile of Formant readings in the center 25% of vowel duration.
-                    f3_avg: formantData[3], // averaged center quadrile of Formant readings in the center 25% of vowel duration.
+                    f1_avg: Number(formantData[1]), // averaged center quadrile of Formant readings in the center 25% of vowel duration.
+                    f2_avg: Number(formantData[2]), // averaged center quadrile of Formant readings in the center 25% of vowel duration.
+                    f3_avg: Number(formantData[3]), // averaged center quadrile of Formant readings in the center 25% of vowel duration.
 
                     word_text: currentSentence.focus_word, // string of phones for word in which vowel is located
                     word_Num: currentSentence.focus_word_Num,
@@ -250,3 +178,10 @@ function formantAnalysis (textGrid, sentenceNum, fileObj) {
 
 }
 
+
+//var x = Meteor.userId;
+//Meteor.userId = function(){
+//    return "tom"
+//}
+//
+//Meteor.userId = x;
