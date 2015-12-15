@@ -49,7 +49,7 @@ Template.sentence_trainer.events({
         console.log("Saved Sentence " + Sentences.findOne({number: this.sentenceId}).text);
 
         // TODO include some return value in the saveSampleSentence to show success or failure
-        Meteor.call("saveSentenceSample", this.sentenceId, Session.get("currentRecording"));
+        Meteor.call("saveSentenceSample", this.sentenceId, Session.get("currentRecording"),SentenceProductionsTypes.training);
 
         Session.set("currentRecording", undefined);
 
