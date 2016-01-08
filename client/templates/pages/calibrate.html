@@ -1,7 +1,12 @@
 <template name="calibrate">
-   <h1>Vowel: {{vowel}}</h1>
+    <div class="ui header">
+        Please read the following sentence: <br>
+        {{getSentence}}
+    </div>
+
     {{> recorderHandler}}
     <br>
-    <div class="ui button green large {{#unless getCurrRecording}}disabled{{/unless}} js-nextStep">Next</div>
+    <div class="ui green button large {{#unless getCurrRecording}}disabled{{/unless}} submitSentence">Save Sentence</div>
+    <div class="ui button green large {{#unless hasValidCalibrationSentence}}disabled{{/unless}} js-nextStep">Next</div>
 
 </template>
