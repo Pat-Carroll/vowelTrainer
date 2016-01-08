@@ -19,16 +19,15 @@ Tracker.autorun(function() {
         //console.log('set session variable canCalibrate to true');
     }
 
-    var vowelCalibrations = CardinalVowels.findOne({_id: userProfile.cardinalVowels});
 
-    if (vowelCalibrations.sampleFileA && vowelCalibrations.sampleFileI && vowelCalibrations.sampleFileU) {
+    if (userProfile.targetVowels) {
         Session.set('canVowelTrain', true);
     } else
     {
         return;
     }
 
-    var sentences = SentenceProductions.findOne({_id: userProfile.sentenceProductions});
+    var sentences = SentenceProductions.findOne({owner: Meteor.userId(), type:SentenceProductionsTypes.training});
     //Todo count sentences ;)
     if (sentences) {
         Session.set('canViewProgress', true);
