@@ -22,9 +22,9 @@ Meteor.methods({
                 var sentencePath = publicPath + "Sentences/sentence" + sentenceNum + ".txt";
                 var tempPath = baseAppPath + "/.temp/" + Meteor.userId();
 
-                console.log("AudioFilePath: " +audioFilePath + audioFileName);
-                console.log("Sentencepath: " + sentencePath);
-                console.log("Temppath: " + tempPath);
+                //console.log("AudioFilePath: " +audioFilePath + audioFileName);
+                //console.log("Sentencepath: " + sentencePath);
+                //console.log("Temppath: " + tempPath);
 
                 // This function is called after a file object is stored in the CFS file system (On server)
                 function afterInsertFA(fileObjT) {
@@ -38,11 +38,11 @@ Meteor.methods({
                     var command = spawn('perl', [publicPath + '/Scripts/HTK_forced_align/doalign_kiel_2pass.pl', audioFilePath + audioFileName, sentencePath, tempPath + ".textgrid", tempPath + ".txt"]);
 
                     command.stdout.on('data', function (data) {
-                        console.log('stdout:' + data);
+                        //console.log('stdout:' + data);
                     });
 
                     command.stderr.on('data', function (data) {
-                        console.log('stderr:' + data);
+                        //console.log('stderr:' + data);
 
                     });
                     command.on('exit', Meteor.bindEnvironment(function (code) {
@@ -90,7 +90,7 @@ function formantAnalysis (textGrid, sentenceNum, fileObj,type) {
     var focusVowelNumber = currentSentence.focus_Vow_Num;
     var rawPhoneInterval = textGrid.obj.item[0].intervals;
     var correctedPhoneInterval = [];
-    console.log(rawPhoneInterval.length);
+    //console.log(rawPhoneInterval.length);
 
     for (var i=0; i < rawPhoneInterval.length; i++){
 
@@ -99,7 +99,7 @@ function formantAnalysis (textGrid, sentenceNum, fileObj,type) {
             correctedPhoneInterval.push(rawPhoneInterval[i])
         }
     }
-    console.log(correctedPhoneInterval);
+    //console.log(correctedPhoneInterval);
     var targetVowel = correctedPhoneInterval[focusVowelNumber];
 
 
@@ -129,10 +129,7 @@ function formantAnalysis (textGrid, sentenceNum, fileObj,type) {
     var formantData;
     command.stdout.on('data', function (data) {
         var myRegEx =/(\d*\.\d*)\D*(\d*\.\d*)\D*(\d*\.\d*)/gm;;
-        formantData = myRegEx.exec(data);
-
-
-        //TODO insert some REGEX to format the formant data.
+        formantData = myRegEx.exec(data).map(Number);
         console.log('stdout:' + formantData);
     });
 
@@ -142,7 +139,7 @@ function formantAnalysis (textGrid, sentenceNum, fileObj,type) {
     command.on('exit', Meteor.bindEnvironment(function (code) {
 
         console.log('child process exited with code: ' + code);
-        if(Formant.checkFormants(formantData, targetVowel)){
+        if(Formant.checkFormants(formantData, targetVowel.text)){
             SentenceProductions.insert(
                 {
                     owner: Meteor.userId(),
@@ -159,15 +156,17 @@ function formantAnalysis (textGrid, sentenceNum, fileObj,type) {
                     pho_end: targetVowel.xmax,
                     pho_length: targetVowel.xmax - targetVowel.xmin,
 
-                    f1_avg: Number(formantData[1]), // averaged center quadrile of Formant readings in the center 25% of vowel duration.
-                    f2_avg: Number(formantData[2]), // averaged center quadrile of Formant readings in the center 25% of vowel duration.
-                    f3_avg: Number(formantData[3]), // averaged center quadrile of Formant readings in the center 25% of vowel duration.
+                    f1_avg: formantData[1], // averaged center quadrile of Formant readings in the center 25% of vowel duration.
+                    f2_avg: formantData[2], // averaged center quadrile of Formant readings in the center 25% of vowel duration.
+                    f3_avg: formantData[3], // averaged center quadrile of Formant readings in the center 25% of vowel duration.
 
                     word_text: currentSentence.focus_word, // string of phones for word in which vowel is located
                     word_Num: currentSentence.focus_word_Num,
                     word_start: targetWord.xmin,
                     word_end: targetWord.xmax,
-                    word_length: targetWord.xmax - targetWord.xmin
+                    word_length: targetWord.xmax - targetWord.xmin,
+
+                    relative_phone_length: ((targetVowel.xmax - targetVowel.xmin) / (targetWord.xmax - targetWord.xmin)) * 100
                 })
 
         }

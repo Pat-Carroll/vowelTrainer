@@ -26,7 +26,7 @@ Template.calibrate.events({
 
     },
     "click .js-nextStep": function (ev) {
-        if (this.sentenceId < 11)
+        if (this.sentenceId < 8)
             Router.go("/calibrate/" + (Number(this.sentenceId) + 1));
         else{
             Meteor.call("calculateCalibration");

@@ -2,7 +2,7 @@ Meteor.methods({
     calculateCalibration: function () {
         var targetVowels = {};
 
-        for (var j = 0; j < 12; j++) {
+        for (var j = 0; j < 9; j++) {
             var prod = SentenceProductions.findOne({owner: Meteor.userId(), sentenceId: j}, {sort: {timestamp: -1}});
             console.log(prod.phone);
 

@@ -20,7 +20,7 @@ Template.sentence_trainer.helpers({
 
     },
     hasPreviousSentence: function() {
-        return this.sentenceId > 0;
+        return this.sentenceId > 8;
     },
     hasNextSentence: function() {
         return this.sentenceId + 1 < Sentences.find().count();

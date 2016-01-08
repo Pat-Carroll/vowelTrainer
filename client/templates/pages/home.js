@@ -22,6 +22,7 @@ Template.home.helpers ({
 		return Session.get("canVowelTrain");
 	},
 	canViewProgress : function(){
+		return true;
 		return Session.get("canViewProgress");
 	}
 
@@ -35,12 +36,12 @@ Template.home.events ({
 
 	'click #calibrate': function (event) {
 		event.preventDefault();
-		Router.go('/calibrate/a');
+		Router.go('/calibrate/0');
 	},
 
 	'click #vowelTrainer': function (event) {
 		event.preventDefault();
-		Router.go('/sentence_trainer/0');
+		Router.go('/sentence_trainer/9');
 	},
 
 	'click #progress': function (event) {
