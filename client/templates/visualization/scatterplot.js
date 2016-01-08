@@ -10,10 +10,21 @@ Template.scatterplot.onRendered(function () {
 
 });
 
+Template.scatterplot.events({
+
+    "click .refresh": function (ev) {
+        last_visited = new Date();
+        Session.set("clear_graph", "clear");
+    }
+});
+
 Template.scatterplot.helpers({
     'displayPlot': function (sentenceID) {
+        var x = Session.get("clear_graph");
+        if (x)
+            Session.set("clear_graph", undefined);
 
-        var vowel_target = [[1600, 250, 2000]];
+        var personProfile = PersonProfiles.findOne({owner: Meteor.userId()});
 
         var current_production_sentences = SentenceProductions.find({
             owner: Meteor.userId(),
@@ -21,23 +32,42 @@ Template.scatterplot.helpers({
             timestamp: {$gt: last_visited}
         }, {sort: {timestamp: -1}});
 
+
+        var sentence = Sentences.findOne({number: sentenceID});
+        var targeVow = personProfile.targetVowels[sentence.focus_vowel]
+        var vowel_target = [[targeVow.f2_avg, targeVow.f1_avg, targeVow.relative_phone_length]];
+
+
         var vowel_productions_user_curr;
         var vowel_productions_user = [];
         current_production_sentences.forEach(function (doc) {
             if (!vowel_productions_user_curr)
-                vowel_productions_user_curr = [{x:doc.f2_avg, y:doc.f1_avg, z:doc.f3_avg, id: doc._id}];
+                vowel_productions_user_curr = [{
+                    x: doc.f2_avg,
+                    y: doc.f1_avg,
+                    z: doc.relative_phone_length,
+                    id: doc._id
+                }];
             else
-                vowel_productions_user.push({x:doc.f2_avg, y:doc.f1_avg, z:doc.f3_avg, id: doc._id});
+                vowel_productions_user.push({x: doc.f2_avg, y: doc.f1_avg, z: doc.relative_phone_length, id: doc._id});
         });
 
 
-        var sample = SentenceProductions.findOne({type: SentenceProductionsTypes.samples,
+        var sample = SentenceProductions.findOne({
+            type: SentenceProductionsTypes.samples,
             owner: Session.get("SeclectedGerman"),
             sentenceId: sentenceID,
             timestamp: {$gt: last_visited}
         }, {sort: {timestamp: -1}});
 
-        var vowel_productions_germans = [{x:sample.f2_avg, y:sample.f1_avg, z:sample.f3_avg, id: sample._id}];
+        var vowel_productions_germans = [];
+        if (sample)
+            vowel_productions_germans = [{
+                x: sample.f2_avg,
+                y: sample.f1_avg,
+                z: sample.relative_phone_length,
+                id: sample._id
+            }];
 
         $('#container').highcharts({
 
@@ -49,33 +79,34 @@ Template.scatterplot.helpers({
             },
 
             title: {
-                text: 'Highcharts bubbles with radial gradient fill'
+                text: 'Vowel Visualizer'
             },
 
 
             xAxis: {
                 gridLineWidth: 1,
-                max: 3000,
-                min: 800,
-                opposite : true
+                max: 800,
+                min: 3000,
+                opposite: true
             },
 
             yAxis: {
                 startOnTick: false,
                 endOnTick: false,
-                max: 800,
-                min: 150,
-                opposite : true
+                max: 150,
+                min: 800,
+                opposite: true
             },
 
+
             plotOptions: {
-              series:{
-                  point:{
-                      events:{
-                          click: onPointClick
-                      }
-                  }
-              }
+                series: {
+                    point: {
+                        events: {
+                            click: onPointClick
+                        }
+                    }
+                }
             },
 
             series: [{
@@ -132,7 +163,7 @@ Template.scatterplot.helpers({
     }
 });
 
-function onPointClick(){
+function onPointClick() {
     console.log(this);
     var sentence = SentenceProductions.findOne({_id: this.options.id});
 
