@@ -1,10 +1,25 @@
 <template name="progress">
 This is the progress template
-    <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+    <div id="container_acoustic" style="min-width: 310px; height: 250px; margin: 0 auto"></div>
+    <div id="container_duration" style="min-width: 310px; height: 250px; margin: 0 auto"></div>
+
     {{drawGraph getSelectedVowel}}
     <div class="ui button js-select-vowel" value="a:">a</div>
     <div class="ui button js-select-vowel" value="i:">i</div>
     <div class="ui button js-select-vowel" value="u:">u</div>
     <div class="ui button js-select-vowel" value="e:">e</div>
     <div class="ui button js-select-vowel" value="o:">o</div>
+
+    <!--<div class="ui buttons">-->
+        <!--<button class="ui button selected js-select-acoustic">Acoustic</button>-->
+        <!--<div class="or"></div>-->
+        <!--<button class="ui button js-select-duration">Duration</button>-->
+    <!--</div>-->
+
+    <div class="ui hidden playback-buttons">
+        <div class="ui green button playUser">Play user audio
+        <audio class="ui hidden playUserAudio"></audio>
+        </div>
+        {{>germanSamples sent_id=sentenceId}}
+    </div>
 </template>
