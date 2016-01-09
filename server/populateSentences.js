@@ -101,6 +101,7 @@ if (Meteor.isServer){
                     text: "a",
                     phon_transcription: "Q Q_ a:",
                     focus_vowel: "a:",
+                    nearby_vowel: "a",
                     focus_Vow_Num: 2,
                     focus_word: "a:",
                     focus_word_Num: 0
@@ -128,6 +129,7 @@ if (Meteor.isServer){
                     text: "geburtstag",
                     phon_transcription: "g g_ @ b b_ Uer ts ts_ t t_ a: k k_",
                     focus_vowel: "a:",
+                    nearby_vowel: "a",
                     focus_Vow_Num: 10,
                     focus_word: "g g_ @ b b_ Uer ts ts_ t t_ a: k k_",
                     focus_word_Num: 0
@@ -136,6 +138,7 @@ if (Meteor.isServer){
                     text: "kahn",
                     phon_transcription: "k k_ a: n",
                     focus_vowel: "a:",
+                    nearby_vowel: "a",
                     focus_Vow_Num: 2,
                     focus_word: "k k_ a: n",
                     focus_word_Num: 0
@@ -144,6 +147,7 @@ if (Meteor.isServer){
                     text: "kann",
                     phon_transcription: "k k_ a n",
                     focus_vowel: "a",
+                    nearby_vowel: "a",
                     focus_Vow_Num: 2,
                     focus_word: "k k_ a n",
                     focus_word_Num: 0
@@ -152,6 +156,7 @@ if (Meteor.isServer){
                     text: "abend geburtstag kahn",
                     phon_transcription: "Q Q_ a: b b_ @ n t t_ g g_ @ b b_ Uer ts ts_ t t_ a: k k_ k k_ a: n",
                     focus_vowel: "a:",
+                    nearby_vowel: "a",
                     focus_Vow_Num: 2,
                     focus_word: "Q Q_ a: b b_ @ n t t_",
                     focus_word_Num: 0
@@ -160,6 +165,7 @@ if (Meteor.isServer){
                     text: "abend",
                     phon_transcription: "Q Q_ a: b b_ @ n t t_",
                     focus_vowel: "a:",
+                    nearby_vowel: "a",
                     focus_Vow_Num: 2,
                     focus_word: "Q Q_ a: b b_ @ n t t_",
                     focus_word_Num: 0

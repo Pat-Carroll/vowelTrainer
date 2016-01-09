@@ -34,8 +34,12 @@ Template.scatterplot.helpers({
 
 
         var sentence = Sentences.findOne({number: sentenceID});
-        var targeVow = personProfile.targetVowels[sentence.focus_vowel]
-        var vowel_target = [[targeVow.f2_avg, targeVow.f1_avg, targeVow.relative_phone_length]];
+        var targeVow = personProfile.targetVowels[sentence.focus_vowel];
+        var nearbyVowel = personProfile.targetVowels[sentence.nearby_vowel];
+        var vowel_target = [{x: targeVow.f2_avg, y: targeVow.f1_avg, z: 25, name:sentence.focus_vowel}];
+        //TODO incoprerate nearby vowels into the system
+        //var nearby_vowel_target = [{x: nearbyVowel.f2_avg, y:nearbyVowel.f1_avg, z: 30, name:sentence.nearby_vowel}];
+
 
 
         var vowel_productions_user_curr;
@@ -85,22 +89,28 @@ Template.scatterplot.helpers({
 
             xAxis: {
                 gridLineWidth: 1,
-                max: 800,
-                min: 3000,
-                opposite: true
+                max: 500,
+                min: 3500,
+                opposite: true,
+
             },
 
             yAxis: {
                 startOnTick: false,
                 endOnTick: false,
-                max: 150,
-                min: 800,
-                opposite: true
+                max: 50,
+                min: 900,
+                opposite: true,
+
             },
 
 
             plotOptions: {
                 series: {
+                    dataLabels:{
+                        enabled: true,
+                        format: '{point.name}'
+                    },
                     point: {
                         events: {
                             click: onPointClick
@@ -133,7 +143,21 @@ Template.scatterplot.helpers({
                         ]
                     }
                 }
-            }, {
+            },
+                {
+                    name: "Nearby vowel",
+                    data: vowel_target, // TODO implement nearby vowel target.
+                    marker: {
+                        fillColor: {
+                            radialGradient: {cx: 0.4, cy: 0.3, r: 0.7},
+                            stops: [
+                                [0, 'rgba(255,255,255,0.5)'],
+                                [1, Highcharts.Color(Highcharts.getOptions().colors[4]).setOpacity(0.5).get('rgba')]
+                            ]
+                        }
+                    }
+                },
+                {
                 name: "German Sample",
                 data: vowel_productions_germans,
                 marker: {
@@ -166,5 +190,12 @@ Template.scatterplot.helpers({
 function onPointClick() {
     console.log(this);
     var sentence = SentenceProductions.findOne({_id: this.options.id});
+
+    var au = $('#datapointAudio');
+    var audioFile = UserAudio.findOne({_id: sentence.recordingId});
+    var url = audioFile.url();
+    au.attr('src', url);
+    au[0].play();
+
 
 }
