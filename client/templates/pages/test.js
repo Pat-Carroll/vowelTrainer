@@ -23,7 +23,7 @@ Template.test.helpers({
         return this.sentenceId > 9;
     },
     hasNextSentence: function() {
-        return this.sentenceId + 1 < Sentences.find().count();
+        return this.sentenceId < 44;
     },
     // TODO when user returns to the sentences page, start on the last incompleted sentence
 
@@ -39,7 +39,7 @@ Template.test.events({
     "click .js-prevStep": function (ev) {
         ev.preventDefault();
         Session.set("currentRecording", undefined);
-        Router.go("/sentence_trainer/" + Number(this.sentenceId - 1));
+        Router.go("/test/" + Number(this.sentenceId - 1));
 
     },
 

@@ -37,8 +37,8 @@ Template.scatterplot.helpers({
         var targeVow = personProfile.targetVowels[sentence.focus_vowel];
         var nearbyVowel = personProfile.targetVowels[sentence.nearby_vowel];
         var vowel_target = [{x: targeVow.f2_avg, y: targeVow.f1_avg, z: 25, name:sentence.focus_vowel}];
-        //TODO incoprerate nearby vowels into the system
-        //var nearby_vowel_target = [{x: nearbyVowel.f2_avg, y:nearbyVowel.f1_avg, z: 30, name:sentence.nearby_vowel}];
+        //TODO get relative duration values from the thing
+        var nearby_vowel_target = [{x: nearbyVowel.f2_avg, y:nearbyVowel.f1_avg, z: 30, name:sentence.nearby_vowel}];
 
 
 

@@ -8,7 +8,8 @@ if (Meteor.isServer){
 
             var trainingSentences = [
                 { number: iter++,
-                    text: "<b style='color:blue'>bad</b>",
+                    text: "bad",
+                    display_text: "<b style='color:blue'>bad</b>",
                     phon_transcription: "b b_ a: d d_",
                     focus_vowel: "a:",
                     nearby_vowel: "a",
@@ -17,7 +18,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "<b style='color:blue'>vater</b>",
+                    text: "vater",
+                    display_text: "<b style='color:blue'>vater</b>",
                     phon_transcription: "f a: t t_ er",
                     focus_vowel: "a:",
                     nearby_vowel: "a",
@@ -26,7 +28,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "<b style='color:blue'>adam</b>",
+                    text: "adam",
+                    display_text: "<b style='color:blue'>adam</b>",
                     phon_transcription: "Q Q_ a: d d_ a m",
                     focus_vowel: "a:",
                     nearby_vowel: "a",
@@ -35,7 +38,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "<b style='color:blue'>tiger</b>",
+                    text: "tiger",
+                    display_text: "<b style='color:blue'>tiger</b>",
                     phon_transcription: "t t_ i: g g_ er",
                     focus_vowel: "i:",
                     nearby_vowel: "I",
@@ -44,7 +48,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "<b style='color:blue'>sie</b>",
+                    text: "sie",
+                    display_text: "<b style='color:blue'>sie</b>",
                     phon_transcription: "z i:",
                     focus_vowel: "i:",
                     nearby_vowel: "I",
@@ -53,7 +58,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "<b style='color:blue'>sieben</b>",
+                    text: "sieben",
+                    display_text: "<b style='color:blue'>sieben</b>",
                     phon_transcription: "z i: b b_ @ n",
                     focus_vowel: "i:",
                     nearby_vowel: "I",
@@ -62,7 +68,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "<b style='color:blue'>du</b>",
+                    text: "du",
+                    display_text: "<b style='color:blue'>du</b>",
                     phon_transcription: "d d_ u:",
                     focus_vowel: "u:",
                     nearby_vowel: "y:",
@@ -71,7 +78,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "<b style='color:blue'>buch</b>",
+                    text: "buch",
+                    display_text: "<b style='color:blue'>buch</b>",
                     phon_transcription: "b b_ u: x",
                     focus_vowel: "u:",
                     nearby_vowel: "y:",
@@ -80,7 +88,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "<b style='color:blue'>mut</b>",
+                    text: "mut",
+                    display_text: "<b style='color:blue'>mut</b>",
                     phon_transcription: "m u: t",
                     focus_vowel: "u:",
                     nearby_vowel: "y:",
@@ -89,7 +98,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "<b style='color:blue'>bieten</b>",
+                    text: "bieten",
+                    display_text: "<b style='color:blue'>bieten</b>",
                     phon_transcription: "b b_ i: t t_ @ n",
                     focus_vowel: "i:",
                     nearby_vowel: "I",
@@ -98,7 +108,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "<b style='color:blue'>bitten</b>",
+                    text: "bitten",
+                    display_text: "<b style='color:blue'>bitten</b>",
                     phon_transcription: "b b_ I t t_ @ n",
                     focus_vowel: "I",
                     nearby_vowel: "i:",
@@ -107,7 +118,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "<b style='color:blue'>findet</b>",
+                    text: "findet",
+                    display_text: "<b style='color:blue'>findet</b>",
                     phon_transcription: "f I n d d_ @ t t_",
                     focus_vowel: "I",
                     nearby_vowel: "i:",
@@ -116,7 +128,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "<b style='color:blue'>fieber</b>",
+                    text: "fieber",
+                    display_text: "<b style='color:blue'>fieber</b>",
                     phon_transcription: "f i: b b_ er",
                     focus_vowel: "i:",
                     nearby_vowel: "I",
@@ -125,7 +138,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "das dach ist <b style='color:blue'>schief</b>",
+                    text: "das dach ist schief",
+                    display_text: "das dach ist <b style='color:blue'>schief</b>",
                     phon_transcription: "d d_ a s d d_ a x Q Q_ I s t t_ S i: f",
                     focus_vowel: "i:",
                     nearby_vowel: "I",
@@ -134,7 +148,8 @@ if (Meteor.isServer){
                     focus_word_Num: "3" },
 
                 { number: iter++,
-                    text: "ich reise mit dem <b style='color:blue'>schiff</b>",
+                    text: "ich reise mit dem schiff",
+                    display_text: "ich reise mit dem <b style='color:blue'>schiff</b>",
                     phon_transcription: "Q Q_ I C r aI z @ m I t t_ d d_ e: m S I f",
                     focus_vowel: "I",
                     nearby_vowel: "i:",
@@ -143,7 +158,8 @@ if (Meteor.isServer){
                     focus_word_Num: "4" },
 
                 { number: iter++,
-                    text: "<b style='color:blue'>die</b>",
+                    text: "die",
+                    display_text: "<b style='color:blue'>die</b>",
                     phon_transcription: "d d_ i:",
                     focus_vowel: "i:",
                     nearby_vowel: "I",
@@ -152,7 +168,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "<b style='color:blue'>licht</b>",
+                    text: "licht",
+                    display_text: "<b style='color:blue'>licht</b>",
                     phon_transcription: "l I C t t_",
                     focus_vowel: "I",
                     nearby_vowel: "i:",
@@ -161,7 +178,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "ich <b style='color:blue'>bring</b> dir die tasse",
+                    text: "ich bring dir die tasse",
+                    display_text: "ich <b style='color:blue'>bring</b> dir die tasse",
                     phon_transcription: "Q Q_ I C b b_ r I N d d_ i:er d d_ i: t t_ a s @",
                     focus_vowel: "I",
                     nearby_vowel: "i:",
@@ -170,7 +188,8 @@ if (Meteor.isServer){
                     focus_word_Num: "1" },
 
                 { number: iter++,
-                    text: "ist <b style='color:blue'>wieder</b> montag?",
+                    text: "ist wieder montag",
+                    display_text: "ist <b style='color:blue'>wieder</b> montag?",
                     phon_transcription: "Q Q_ I s t t_ v i: d d_ er o: n t t_ a: k k_",
                     focus_vowel: "i:",
                     nearby_vowel: "I",
@@ -179,7 +198,8 @@ if (Meteor.isServer){
                     focus_word_Num: "1" },
 
                 { number: iter++,
-                    text: "<b style='color:blue'>kinder</b> spielen im park",
+                    text: "kinder spielen im park",
+                    display_text: "<b style='color:blue'>kinder</b> spielen im park",
                     phon_transcription: "k k_ I n d d_ er S p p_ i: l @ n Q Q_ I m p p_ a r k k_",
                     focus_vowel: "I",
                     nearby_vowel: "i:",
@@ -188,7 +208,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "<b style='color:blue'>berlin</b> ist schön im herbst",
+                    text: "berlin ist schön im herbst",
+                    display_text: "<b style='color:blue'>berlin</b> ist schön im herbst",
                     phon_transcription: "b b_ Eer l i: n Q Q_ I s t t_ S eu: n Q Q_ I m h E r p p_ s t",
                     focus_vowel: "i:",
                     nearby_vowel: "I",
@@ -197,7 +218,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "<b style='color:blue'>Schoß</b>",
+                    text: "Schoß",
+                    display_text: "<b style='color:blue'>Schoß</b>",
                     phon_transcription: "S O s",
                     focus_vowel: "O",
                     nearby_vowel: "o:",
@@ -206,7 +228,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "<b style='color:blue'>schoss</b>",
+                    text: "schoss",
+                    display_text: "<b style='color:blue'>schoss</b>",
                     phon_transcription: "S o: s",
                     focus_vowel: "o:",
                     nearby_vowel: "O",
@@ -215,7 +238,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "wir <b style='color:blue'>wohnen</b> in Ulm",
+                    text: "wir wohnen in ulm",
+                    display_text: "wir <b style='color:blue'>wohnen</b> in Ulm",
                     phon_transcription: "v i:er V o: n @ n Q Q_ I n",
                     focus_vowel: "o:",
                     nearby_vowel: "O",
@@ -224,7 +248,8 @@ if (Meteor.isServer){
                     focus_word_Num: "1" },
 
                 { number: iter++,
-                    text: "die <b style='color:blue'>sonne</b> scheint",
+                    text: "die sonne scheint",
+                    display_text: "die <b style='color:blue'>sonne</b> scheint",
                     phon_transcription: "d d_ i: z O n @ S aI n t t_",
                     focus_vowel: "O",
                     nearby_vowel: "o:",
@@ -233,7 +258,8 @@ if (Meteor.isServer){
                     focus_word_Num: "1" },
 
                 { number: iter++,
-                    text: "das <b style='color:blue'>boot</b> ist aus holz",
+                    text: "das boot ist aus holz",
+                    display_text: "das <b style='color:blue'>boot</b> ist aus holz",
                     phon_transcription: "d d_ a s b b_ o: t t_ Q Q_ I s t t_ Q Q_ aU s h O l ts ts_",
                     focus_vowel: "o:",
                     nearby_vowel: "O",
@@ -242,7 +268,8 @@ if (Meteor.isServer){
                     focus_word_Num: "1" },
 
                 { number: iter++,
-                    text: "er <b style='color:blue'>bot</b> mir fünf euro",
+                    text: "er bot mir fünf euro",
+                    display_text: "er <b style='color:blue'>bot</b> mir fünf euro",
                     phon_transcription: "Q Q_ e:er b b_ O t t_ m i: er f Y n f",
                     focus_vowel: "O",
                     nearby_vowel: "o:",
@@ -251,7 +278,8 @@ if (Meteor.isServer){
                     focus_word_Num: "1" },
 
                 { number: iter++,
-                    text: "<b style='color:blue'>von</b>",
+                    text: "von",
+                    display_text: "<b style='color:blue'>von</b>",
                     phon_transcription: "f O n",
                     focus_vowel: "O",
                     nearby_vowel: "o:",
@@ -260,7 +288,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "<b style='color:blue'>boden</b>",
+                    text: "boden",
+                    display_text: "<b style='color:blue'>boden</b>",
                     phon_transcription: "b b_ o: d d_ @ n",
                     focus_vowel: "o:",
                     nearby_vowel: "O",
@@ -269,7 +298,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "der stürmer schießt ein <b style='color:blue'>tor</b>",
+                    text: "der stürmer schießt ein tor",
+                    display_text: "der stürmer schießt ein <b style='color:blue'>tor</b>",
                     phon_transcription: "d d_ e:er S t t_ Y r m @ S i: s t t_ Q Q_ aI n t t_ o: r",
                     focus_vowel: "o:",
                     nearby_vowel: "O",
@@ -278,7 +308,8 @@ if (Meteor.isServer){
                     focus_word_Num: "4" },
 
                 { number: iter++,
-                    text: "die packung ist noch <b style='color:blue'>voll</b>",
+                    text: "die packung ist noch voll",
+                    display_text: "die packung ist noch <b style='color:blue'>voll</b>",
                     phon_transcription: "d d_ i: p a k k_ U N Q Q_ I s t t_ n O x f O l",
                     focus_vowel: "O",
                     nearby_vowel: "o:",
@@ -287,7 +318,8 @@ if (Meteor.isServer){
                     focus_word_Num: "4" },
 
                 { number: iter++,
-                    text: "<b style='color:blue'>bock</b>",
+                    text: "bock",
+                    display_text: "<b style='color:blue'>bock</b>",
                     phon_transcription: "b b_ O k k_",
                     focus_vowel: "O",
                     nearby_vowel: "o:",
@@ -296,7 +328,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "<b style='color:blue'>brot</b>",
+                    text: "brot",
+                    display_text: "<b style='color:blue'>brot</b>",
                     phon_transcription: "b b_ r o: t t_",
                     focus_vowel: "o:",
                     nearby_vowel: "O",
@@ -305,7 +338,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "<b style='color:blue'>bahn</b>",
+                    text: "bahn",
+                    display_text: "<b style='color:blue'>bahn</b>",
                     phon_transcription: "b b_ a: n",
                     focus_vowel: "a:",
                     nearby_vowel: "a",
@@ -314,7 +348,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "<b style='color:blue'>bann</b>",
+                    text: "bann",
+                    display_text: "<b style='color:blue'>bann</b>",
                     phon_transcription: "b b_ a n",
                     focus_vowel: "a",
                     nearby_vowel: "a:",
@@ -323,7 +358,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "<b style='color:blue'>hat</b>",
+                    text: "hat",
+                    display_text: "<b style='color:blue'>hat</b>",
                     phon_transcription: "h a t t_",
                     focus_vowel: "a",
                     nearby_vowel: "a:",
@@ -332,7 +368,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "<b style='color:blue'>nach</b>",
+                    text: "nach",
+                    display_text: "<b style='color:blue'>nach</b>",
                     phon_transcription: "n a: x",
                     focus_vowel: "a:",
                     nearby_vowel: "a",
@@ -341,7 +378,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "die jacke hängt am <b style='color:blue'>haken</b>",
+                    text: "die jacke hängt am haken",
+                    display_text: "die jacke hängt am <b style='color:blue'>haken</b>",
                     phon_transcription: "d d_ i: j a k k_ @ h E N t t_ Q Q_ a m h a: k k_ @ n",
                     focus_vowel: "a:",
                     nearby_vowel: "a",
@@ -350,7 +388,8 @@ if (Meteor.isServer){
                     focus_word_Num: "4" },
 
                 { number: iter++,
-                    text: "das holz muss man <b style='color:blue'>hacken</b>",
+                    text: "das holz muss man hacken",
+                    display_text: "das holz muss man <b style='color:blue'>hacken</b>",
                     phon_transcription: "d d_ a s h O l ts ts_ m U s m a n h a k k_ @ n",
                     focus_vowel: "a",
                     nearby_vowel: "a:",
@@ -359,7 +398,8 @@ if (Meteor.isServer){
                     focus_word_Num: "4" },
 
                 { number: iter++,
-                    text: "das ist deine <b style='color:blue'>wahl</b>",
+                    text: "das ist deine wahl",
+                    display_text: "das ist deine <b style='color:blue'>wahl</b>",
                     phon_transcription: "d d_ a s Q Q_ I s t t_ d d_ aI n @ v a: l",
                     focus_vowel: "a:",
                     nearby_vowel: "a",
@@ -368,7 +408,8 @@ if (Meteor.isServer){
                     focus_word_Num: "3" },
 
                 { number: iter++,
-                    text: "das ist eine dunkle <b style='color:blue'>gasse</b>",
+                    text: "das ist eine dunkle gasse",
+                    display_text: "das ist eine dunkle <b style='color:blue'>gasse</b>",
                     phon_transcription: "d d_ a s Q Q_ I s t t_ Q Q_ aI n @ d d_ U N k k_ l @ g g_ a s @",
                     focus_vowel: "a",
                     nearby_vowel: "a:",
@@ -377,7 +418,8 @@ if (Meteor.isServer){
                     focus_word_Num: "4" },
 
                 { number: iter++,
-                    text: "<b style='color:blue'>abend</b>",
+                    text: "abend",
+                    display_text: "<b style='color:blue'>abend</b>",
                     phon_transcription: "Q Q_ a: b b_ @ n t t_",
                     focus_vowel: "a:",
                     nearby_vowel: "a",
@@ -386,7 +428,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "<b style='color:blue'>nacht</b>",
+                    text: "nacht",
+                    display_text: "<b style='color:blue'>nacht</b>",
                     phon_transcription: "n a x t t_",
                     focus_vowel: "a",
                     nearby_vowel: "a:",
@@ -395,7 +438,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "ich schaue heute <b style='color:blue'>tatort</b>",
+                    text: "ich schaue heute tatort",
+                    display_text: "ich schaue heute <b style='color:blue'>tatort</b>",
                     phon_transcription: "Q Q_ I C S aU @ h OY t t_ @ t t_ a: t t_ Q Q_ Oer t t_",
                     focus_vowel: "a:",
                     nearby_vowel: "a",
@@ -404,7 +448,8 @@ if (Meteor.isServer){
                     focus_word_Num: "3" },
 
                 { number: iter++,
-                    text: "ich bezahle an der <b style='color:blue'>kasse</b>",
+                    text: "ich bezahle an der kasse",
+                    display_text: "ich bezahle an der <b style='color:blue'>kasse</b>",
                     phon_transcription: "Q Q_ I C b b_ @ ts a: l @ Q Q_ a n d d_ e:er k k_ a s @",
                     focus_vowel: "a",
                     nearby_vowel: "a:",
@@ -413,7 +458,8 @@ if (Meteor.isServer){
                     focus_word_Num: "4" },
 
                 { number: iter++,
-                    text: "<b style='color:blue'>miete</b>",
+                    text: "miete",
+                    display_text: "<b style='color:blue'>miete</b>",
                     phon_transcription: "m i: t t_ @",
                     focus_vowel: "i:",
                     nearby_vowel: "I",
@@ -422,7 +468,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "<b style='color:blue'>mitte</b>",
+                    text: "mitte",
+                    display_text: "<b style='color:blue'>mitte</b>",
                     phon_transcription: "m I t t_ @",
                     focus_vowel: "I",
                     nearby_vowel: "i:",
@@ -431,7 +478,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "<b style='color:blue'>wie</b>",
+                    text: "wie",
+                    display_text: "<b style='color:blue'>wie</b>",
                     phon_transcription: "v i:",
                     focus_vowel: "i:",
                     nearby_vowel: "I",
@@ -440,7 +488,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "<b style='color:blue'>mit</b>",
+                    text: "mit",
+                    display_text: "<b style='color:blue'>mit</b>",
                     phon_transcription: "m I t t_",
                     focus_vowel: "I",
                     nearby_vowel: "i:",
@@ -449,7 +498,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "die letzte nacht war <b style='color:blue'>still</b>",
+                    text: "die letzte nacht war still",
+                    display_text: "die letzte nacht war <b style='color:blue'>still</b>",
                     phon_transcription: "d d_ i: l E ts ts_ t t_ @ n a x t t_ v a:er S t t_ I l",
                     focus_vowel: "I",
                     nearby_vowel: "i:",
@@ -458,7 +508,8 @@ if (Meteor.isServer){
                     focus_word_Num: "4" },
 
                 { number: iter++,
-                    text: "ich esse ein eis am <b style='color:blue'>stiel</b>",
+                    text: "ich esse ein eis am stiel",
+                    display_text: "ich esse ein eis am <b style='color:blue'>stiel</b>",
                     phon_transcription: "Q Q_ I C Q Q_ E s @ Q Q_ aI n Q Q_ aI s Q Q_ a m S t t_ i: l",
                     focus_vowel: "i:",
                     nearby_vowel: "I",
@@ -467,7 +518,8 @@ if (Meteor.isServer){
                     focus_word_Num: "5" },
 
                 { number: iter++,
-                    text: "ich bin ein <b style='color:blue'>sieger</b>",
+                    text: "ich bin ein sieger",
+                    display_text: "ich bin ein <b style='color:blue'>sieger</b>",
                     phon_transcription: "Q Q_ I C b b_ I n Q Q_ aI n z i: g g_ er",
                     focus_vowel: "i:",
                     nearby_vowel: "I",
@@ -476,7 +528,8 @@ if (Meteor.isServer){
                     focus_word_Num: "3" },
 
                 { number: iter++,
-                    text: "ich lese <b style='color:blue'>häufig</b>",
+                    text: "ich lese häufig",
+                    display_text: "ich lese <b style='color:blue'>häufig</b>",
                     phon_transcription: "Q Q_ I C l e: z @ h OY f I C",
                     focus_vowel: "I",
                     nearby_vowel: "i:",
@@ -485,7 +538,8 @@ if (Meteor.isServer){
                     focus_word_Num: "2" },
 
                 { number: iter++,
-                    text: "bist du <b style='color:blue'>im</b> kino?",
+                    text: "bist du im kino",
+                    display_text: "bist du <b style='color:blue'>im</b> kino?",
                     phon_transcription: "b b_ I s t t_ d d_ u: Q Q_ I m k_ i: n o",
                     focus_vowel: "I",
                     nearby_vowel: "i:",
@@ -494,7 +548,8 @@ if (Meteor.isServer){
                     focus_word_Num: "2" },
 
                 { number: iter++,
-                    text: "hast du <b style='color:blue'>ihm</b> gesagt...?",
+                    text: "hast du ihm gesagt",
+                    display_text: "hast du <b style='color:blue'>ihm</b> gesagt...?",
                     phon_transcription: "h a s t t_ d d_ u: Q Q_ i: m",
                     focus_vowel: "i:",
                     nearby_vowel: "I",
@@ -503,7 +558,8 @@ if (Meteor.isServer){
                     focus_word_Num: "2" },
 
                 { number: iter++,
-                    text: "<b style='color:blue'>email</b>",
+                    text: "email",
+                    display_text: "<b style='color:blue'>email</b>",
                     phon_transcription: "Q Q_ i: m eI l",
                     focus_vowel: "i:",
                     nearby_vowel: "I",
@@ -512,7 +568,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "<b style='color:blue'>sind</b>",
+                    text: "sind",
+                    display_text: "<b style='color:blue'>sind</b>",
                     phon_transcription: "z I n t t_",
                     focus_vowel: "I",
                     nearby_vowel: "i:",
@@ -521,7 +578,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "der fels hat <b style='color:blue'>risse</b>",
+                    text: "der fels hat risse",
+                    display_text: "der fels hat <b style='color:blue'>risse</b>",
                     phon_transcription: "d d_ e:er f E l s h a t t_ r I s @",
                     focus_vowel: "I",
                     nearby_vowel: "i:",
@@ -530,7 +588,8 @@ if (Meteor.isServer){
                     focus_word_Num: "3" },
 
                 { number: iter++,
-                    text: "der mann ist ein <b style='color:blue'>riese</b>",
+                    text: "der mann ist ein riese",
+                    display_text: "der mann ist ein <b style='color:blue'>riese</b>",
                     phon_transcription: "d d_ e:er m a n Q Q_ I s t t_ Q Q_ aI n r i: s @",
                     focus_vowel: "i:",
                     nearby_vowel: "I",
@@ -539,7 +598,8 @@ if (Meteor.isServer){
                     focus_word_Num: "4" },
 
                 { number: iter++,
-                    text: "ich habe schmerzen am <b style='color:blue'>knie</b>",
+                    text: "ich habe schmerzen am knie",
+                    display_text: "ich habe schmerzen am <b style='color:blue'>knie</b>",
                     phon_transcription: "Q Q_ I C h a: b b_ @ S m Eer ts ts_ @ n Q Q_ a m k k_ n i:",
                     focus_vowel: "i:",
                     nearby_vowel: "I",
@@ -548,7 +608,8 @@ if (Meteor.isServer){
                     focus_word_Num: "4" },
 
                 { number: iter++,
-                    text: "ich schicke einen brief an <b style='color:blue'>dich</b>",
+                    text: "ich schicke einen brief an dich",
+                    display_text: "ich schicke einen brief an <b style='color:blue'>dich</b>",
                     phon_transcription: "Q Q_ I C S I k k_ @ Q Q_ aI n @ n b b_ r i: f Q Q_ a n d d_ I C",
                     focus_vowel: "I",
                     nearby_vowel: "i:",
@@ -557,7 +618,8 @@ if (Meteor.isServer){
                     focus_word_Num: "5" },
 
                 { number: iter++,
-                    text: "<b style='color:blue'>schiss</b>",
+                    text: "schiss",
+                    display_text: "<b style='color:blue'>schiss</b>",
                     phon_transcription: "] S I s",
                     focus_vowel: "I",
                     nearby_vowel: "i:",
@@ -566,7 +628,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "<b style='color:blue'>schieß</b>",
+                    text: "schieß",
+                    display_text: "<b style='color:blue'>schieß</b>",
                     phon_transcription: "S i: s",
                     focus_vowel: "i:",
                     nearby_vowel: "I",
@@ -575,7 +638,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "<b style='color:blue'>kiefer</b>",
+                    text: "kiefer",
+                    display_text: "<b style='color:blue'>kiefer</b>",
                     phon_transcription: "k k_ i: f er",
                     focus_vowel: "i:",
                     nearby_vowel: "I",
@@ -584,7 +648,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "<b style='color:blue'>kiffer</b>",
+                    text: "kiffer",
+                    display_text: "<b style='color:blue'>kiffer</b>",
                     phon_transcription: "k k_ I f er",
                     focus_vowel: "I",
                     nearby_vowel: "i:",
@@ -593,7 +658,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "<b style='color:blue'>ofen</b>",
+                    text: "ofen",
+                    display_text: "<b style='color:blue'>ofen</b>",
                     phon_transcription: "Q Q_ o: f n",
                     focus_vowel: "o:",
                     nearby_vowel: "O",
@@ -602,7 +668,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "<b style='color:blue'>offen</b>",
+                    text: "offen",
+                    display_text: "<b style='color:blue'>offen</b>",
                     phon_transcription: "Q Q_ O f n",
                     focus_vowel: "O",
                     nearby_vowel: "o:",
@@ -611,7 +678,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "<b style='color:blue'>auto</b>",
+                    text: "auto",
+                    display_text: "<b style='color:blue'>auto</b>",
                     phon_transcription: "Q Q_ aU t t_ o:",
                     focus_vowel: "o:",
                     nearby_vowel: "O",
@@ -620,7 +688,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "<b style='color:blue'>block</b>",
+                    text: "block",
+                    display_text: "<b style='color:blue'>block</b>",
                     phon_transcription: "b b_ l O k k_",
                     focus_vowel: "O",
                     nearby_vowel: "o:",
@@ -629,7 +698,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "<b style='color:blue'>polen</b> ist ein schönes land",
+                    text: "polen ist ein schönes land",
+                    display_text: "<b style='color:blue'>polen</b> ist ein schönes land",
                     phon_transcription: "p p_ o: l @ n Q Q_ I s t t_ Q Q_ aI n S eu: n @ s l a n t t_",
                     focus_vowel: "o:",
                     nearby_vowel: "O",
@@ -638,7 +708,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "<b style='color:blue'>pollen</b> fliegen durch die luft",
+                    text: "pollen fliegen durch die luft",
+                    display_text: "<b style='color:blue'>pollen</b> fliegen durch die luft",
                     phon_transcription: "p p_ O l @ n f l i: g g_ @ n d d_ Uer C d d_ i: l U f t t_",
                     focus_vowel: "O",
                     nearby_vowel: "o:",
@@ -647,7 +718,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "meine <b style='color:blue'>socken</b> sind nass",
+                    text: "meine socken sind nass",
+                    display_text: "meine <b style='color:blue'>socken</b> sind nass",
                     phon_transcription: "m aI n @ z O k k_ @ n z I n t t_ n a s",
                     focus_vowel: "O",
                     nearby_vowel: "o:",
@@ -656,7 +728,8 @@ if (Meteor.isServer){
                     focus_word_Num: "1" },
 
                 { number: iter++,
-                    text: "die <b style='color:blue'>metro</b> ist voll",
+                    text: "die metro ist voll",
+                    display_text: "die <b style='color:blue'>metro</b> ist voll",
                     phon_transcription: "d d_ i: m e: t t_ r o: Q Q_ I s t t_ f O l",
                     focus_vowel: "o:",
                     nearby_vowel: "O",
@@ -665,7 +738,8 @@ if (Meteor.isServer){
                     focus_word_Num: "1" },
 
                 { number: iter++,
-                    text: "er schießt mit <b style='color:blue'>schrot</b>",
+                    text: "er schießt mit schrot",
+                    display_text: "er schießt mit <b style='color:blue'>schrot</b>",
                     phon_transcription: "Q Q_ e:er S i: s t t_ m I t t_ S r o: t t_",
                     focus_vowel: "o:",
                     nearby_vowel: "O",
@@ -674,7 +748,8 @@ if (Meteor.isServer){
                     focus_word_Num: "3" },
 
                 { number: iter++,
-                    text: "mein auto ist <b style='color:blue'>schrott</b>",
+                    text: "mein auto ist schrott",
+                    display_text: "mein auto ist <b style='color:blue'>schrott</b>",
                     phon_transcription: "m aI n Q Q_ aU t t_ o: Q Q_ I s t t_ S r O t t_",
                     focus_vowel: "O",
                     nearby_vowel: "o:",
@@ -683,7 +758,8 @@ if (Meteor.isServer){
                     focus_word_Num: "3" },
 
                 { number: iter++,
-                    text: "<b style='color:blue'>oder</b>",
+                    text: "oder",
+                    display_text: "<b style='color:blue'>oder</b>",
                     phon_transcription: "Q Q_ o: d d_ er",
                     focus_vowel: "o:",
                     nearby_vowel: "O",
@@ -692,7 +768,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "<b style='color:blue'>tonne</b>",
+                    text: "tonne",
+                    display_text: "<b style='color:blue'>tonne</b>",
                     phon_transcription: "t t_ O n @",
                     focus_vowel: "O",
                     nearby_vowel: "o:",
@@ -701,7 +778,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "richter tragen <b style='color:blue'>roben</b>",
+                    text: "richter tragen roben",
+                    display_text: "richter tragen <b style='color:blue'>roben</b>",
                     phon_transcription: "r I C t t_ er t t_ r a: g g_ @ n r o: b b_ @ n",
                     focus_vowel: "o:",
                     nearby_vowel: "O",
@@ -710,7 +788,8 @@ if (Meteor.isServer){
                     focus_word_Num: "2" },
 
                 { number: iter++,
-                    text: "in Alaska leben <b style='color:blue'>robben</b>",
+                    text: "in Alaska leben robben",
+                    display_text: "in Alaska leben <b style='color:blue'>robben</b>",
                     phon_transcription: "Q Q_ I n l e: b b_ n r O b b_ @ n",
                     focus_vowel: "O",
                     nearby_vowel: "o:",
@@ -719,7 +798,8 @@ if (Meteor.isServer){
                     focus_word_Num: "3" },
 
                 { number: iter++,
-                    text: "<b style='color:blue'>hohl</b>",
+                    text: "hohl",
+                    display_text: "<b style='color:blue'>hohl</b>",
                     phon_transcription: "h o: l",
                     focus_vowel: "o:",
                     nearby_vowel: "O",
@@ -728,7 +808,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "<b style='color:blue'>hol</b>",
+                    text: "hol",
+                    display_text: "<b style='color:blue'>hol</b>",
                     phon_transcription: "h O l",
                     focus_vowel: "O",
                     nearby_vowel: "o:",
@@ -737,7 +818,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "<b style='color:blue'>rogen</b>",
+                    text: "rogen",
+                    display_text: "<b style='color:blue'>rogen</b>",
                     phon_transcription: "r o: g g_ n",
                     focus_vowel: "o:",
                     nearby_vowel: "O",
@@ -746,7 +828,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "<b style='color:blue'>roggen</b>",
+                    text: "roggen",
+                    display_text: "<b style='color:blue'>roggen</b>",
                     phon_transcription: "r O g g_ n",
                     focus_vowel: "O",
                     nearby_vowel: "o:",
@@ -755,7 +838,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "das seil hat einen <b style='color:blue'>knoten</b>",
+                    text: "das seil hat einen knoten",
+                    display_text: "das seil hat einen <b style='color:blue'>knoten</b>",
                     phon_transcription: "d d_ a s z ai l h a t t_ Q Q_ aI n @ n k k_ n o: t t_ @ n",
                     focus_vowel: "o:",
                     nearby_vowel: "O",
@@ -764,7 +848,8 @@ if (Meteor.isServer){
                     focus_word_Num: "4" },
 
                 { number: iter++,
-                    text: "ich backe eine <b style='color:blue'>torte</b>",
+                    text: "ich backe eine torte",
+                    display_text: "ich backe eine <b style='color:blue'>torte</b>",
                     phon_transcription: "Q Q_ I C b b_ a k k_ @ Q Q_ aI n @ t t_ O r t @",
                     focus_vowel: "O",
                     nearby_vowel: "o:",
@@ -773,7 +858,8 @@ if (Meteor.isServer){
                     focus_word_Num: "3" },
 
                 { number: iter++,
-                    text: "die <b style='color:blue'>hasen</b> springen weg",
+                    text: "die hasen springen weg",
+                    display_text: "die <b style='color:blue'>hasen</b> springen weg",
                     phon_transcription: "d d_ i: h a: z @ n S p p_ r I N @ n v E k k_",
                     focus_vowel: "a:",
                     nearby_vowel: "a",
@@ -782,7 +868,8 @@ if (Meteor.isServer){
                     focus_word_Num: "1" },
 
                 { number: iter++,
-                    text: "sie <b style='color:blue'>hassen</b> meine oma",
+                    text: "sie hassen meine oma",
+                    display_text: "sie <b style='color:blue'>hassen</b> meine oma",
                     phon_transcription: "z i: h a s @ n m aI n @ Q Q_ o: m a",
                     focus_vowel: "a",
                     nearby_vowel: "a:",
@@ -791,7 +878,8 @@ if (Meteor.isServer){
                     focus_word_Num: "1" },
 
                 { number: iter++,
-                    text: "wir müssen schnell <b style='color:blue'>fahren</b>",
+                    text: "wir müssen schnell fahren",
+                    display_text: "wir müssen schnell <b style='color:blue'>fahren</b>",
                     phon_transcription: "v i:er m Y s n S n E l f a: r @ n",
                     focus_vowel: "a:",
                     nearby_vowel: "a",
@@ -800,7 +888,8 @@ if (Meteor.isServer){
                     focus_word_Num: "3" },
 
                 { number: iter++,
-                    text: "heute werde ich <b style='color:blue'>zwanzig</b>",
+                    text: "heute werde ich zwanzig",
+                    display_text: "heute werde ich <b style='color:blue'>zwanzig</b>",
                     phon_transcription: "h OY t t_ @ v e: er d d_ @ Q Q_ I C ts ts_ v a n ts ts_ I C",
                     focus_vowel: "a",
                     nearby_vowel: "a:",
@@ -809,7 +898,8 @@ if (Meteor.isServer){
                     focus_word_Num: "3" },
 
                 { number: iter++,
-                    text: "<b style='color:blue'>stadt</b>",
+                    text: "stadt",
+                    display_text: "<b style='color:blue'>stadt</b>",
                     phon_transcription: "S t t_ a t t_",
                     focus_vowel: "a",
                     nearby_vowel: "a:",
@@ -818,7 +908,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "<b style='color:blue'>staat</b>",
+                    text: "staat",
+                    display_text: "<b style='color:blue'>staat</b>",
                     phon_transcription: "S t t_ a: t t_",
                     focus_vowel: "a:",
                     nearby_vowel: "a",
@@ -827,7 +918,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "<b style='color:blue'>rad</b>",
+                    text: "rad",
+                    display_text: "<b style='color:blue'>rad</b>",
                     phon_transcription: "r a: t t_",
                     focus_vowel: "a:",
                     nearby_vowel: "a",
@@ -836,7 +928,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "<b style='color:blue'>kann</b>",
+                    text: "kann",
+                    display_text: "<b style='color:blue'>kann</b>",
                     phon_transcription: "k k_ a n",
                     focus_vowel: "a",
                     nearby_vowel: "a:",
@@ -845,7 +938,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "<b style='color:blue'>ratten</b> sind eklig",
+                    text: "ratten sind eklig",
+                    display_text: "<b style='color:blue'>ratten</b> sind eklig",
                     phon_transcription: "r a t t_ n z I n t t_ Q Q_ e: k k_ l I C",
                     focus_vowel: "a",
                     nearby_vowel: "a:",
@@ -854,7 +948,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "<b style='color:blue'>raten</b> ist erlaubt",
+                    text: "raten ist erlaubt",
+                    display_text: "<b style='color:blue'>raten</b> ist erlaubt",
                     phon_transcription: "r a: t t_ n Q Q_ I s t t_ Q Q_ e: er l a p p_ t t_",
                     focus_vowel: "a:",
                     nearby_vowel: "a",
@@ -863,7 +958,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "<b style='color:blue'>haben</b>",
+                    text: "haben",
+                    display_text: "<b style='color:blue'>haben</b>",
                     phon_transcription: "h a: b b_ @ n",
                     focus_vowel: "a:",
                     nearby_vowel: "a",
@@ -872,7 +968,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "<b style='color:blue'>katze</b>",
+                    text: "katze",
+                    display_text: "<b style='color:blue'>katze</b>",
                     phon_transcription: "k k_ a ts ts_ @",
                     focus_vowel: "a",
                     nearby_vowel: "a:",
@@ -881,7 +978,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "<b style='color:blue'>wahn</b>",
+                    text: "wahn",
+                    display_text: "<b style='color:blue'>wahn</b>",
                     phon_transcription: "v a: n",
                     focus_vowel: "a:",
                     nearby_vowel: "a",
@@ -890,7 +988,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "<b style='color:blue'>wann</b>",
+                    text: "wann",
+                    display_text: "<b style='color:blue'>wann</b>",
                     phon_transcription: "v a n",
                     focus_vowel: "a",
                     nearby_vowel: "a:",
@@ -899,7 +998,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "<b style='color:blue'>kam</b>",
+                    text: "kam",
+                    display_text: "<b style='color:blue'>kam</b>",
                     phon_transcription: "k k_ a: m",
                     focus_vowel: "a:",
                     nearby_vowel: "a",
@@ -908,7 +1008,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "<b style='color:blue'>kamm</b>",
+                    text: "kamm",
+                    display_text: "<b style='color:blue'>kamm</b>",
                     phon_transcription: "k k_ a m",
                     focus_vowel: "a",
                     nearby_vowel: "a:",
@@ -917,7 +1018,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "<b style='color:blue'>man</b> muss bezahlen",
+                    text: "man muss bezahlen",
+                    display_text: "<b style='color:blue'>man</b> muss bezahlen",
                     phon_transcription: "m a n m U s b b_ @ ts a: l @ n",
                     focus_vowel: "a",
                     nearby_vowel: "a:",
@@ -926,7 +1028,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "<b style='color:blue'>gas</b> ist brenbar",
+                    text: "gas ist brenbar",
+                    display_text: "<b style='color:blue'>gas</b> ist brenbar",
                     phon_transcription: "g g_ a: s Q Q_ I s t t_ b b_ r E n b b_ a:er",
                     focus_vowel: "a:",
                     nearby_vowel: "a",
@@ -935,7 +1038,8 @@ if (Meteor.isServer){
                     focus_word_Num: "0" },
 
                 { number: iter++,
-                    text: "ich habe eine <b style='color:blue'>blase</b> am fuß",
+                    text: "ich habe eine blase am fuß",
+                    display_text: "ich habe eine <b style='color:blue'>blase</b> am fuß",
                     phon_transcription: "Q Q_ I C h a: b b_ @ Q Q_ aI n @b b_ l a: s @ Q Q_ a m f u: s",
                     focus_vowel: "a:",
                     nearby_vowel: "a",
@@ -945,7 +1049,8 @@ if (Meteor.isServer){
 
 
                 { number: iter++,
-                    text: "sie hat eine <b style='color:blue'>blasse</b> haut",
+                    text: "sie hat eine blasse haut",
+                    display_text: "sie hat eine <b style='color:blue'>blasse</b> haut",
                     phon_transcription: "z i: h a t t_ Q Q_ aI n @b b_ l a s @ h aU t t_",
                     focus_vowel: "a",
                     nearby_vowel: "a:",

@@ -9,11 +9,16 @@ Meteor.methods({
             if(!targetVowels[prod.phone])
                 targetVowels[prod.phone] = {total: 0, f1_avg: 0, f2_avg: 0, f3_avg: 0};
 
-           var a = targetVowels[prod.phone];
-                    a.f1_avg = (a.total * a.f1_avg + prod.f1_avg) / (a.total+1);
-                    a.f2_avg = (a.total * a.f2_avg + prod.f2_avg) / (a.total+1);
-                    a.f3_avg = (a.total * a.f3_avg + prod.f3_avg) / (a.total+1);
-                    a.total++;
+            var vowel = targetVowels[prod.phone];
+            vowel.f1_avg = (vowel.total * vowel.f1_avg + prod.f1_avg) / (vowel.total+1);
+            vowel.f2_avg = (vowel.total * vowel.f2_avg + prod.f2_avg) / (vowel.total+1);
+            vowel.f3_avg = (vowel.total * vowel.f3_avg + prod.f3_avg) / (vowel.total+1);
+            vowel.total++;
+
+
+
+
+
 
         }
         //TODO calculate other vowels

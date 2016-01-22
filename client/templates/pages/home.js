@@ -46,7 +46,7 @@ Template.home.events ({
 
 	'click #vowelTrainer': function (event) {
 		event.preventDefault();
-		Router.go('/sentence_trainer/9');
+		Router.go('/sentence_trainer/45');
 	},
 
 	'click #progress': function (event) {
