@@ -39,6 +39,11 @@ Template.home.events ({
 		Router.go('/calibrate/0');
 	},
 
+	'click #test': function (event) {
+		event.preventDefault();
+		Router.go('/test/9');
+	},
+
 	'click #vowelTrainer': function (event) {
 		event.preventDefault();
 		Router.go('/sentence_trainer/9');

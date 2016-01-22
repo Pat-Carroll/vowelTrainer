@@ -1,0 +1,25 @@
+<template name="test">
+
+        <div class="ui center aligned segment sentence">
+
+
+
+            <br>
+            <div class="ui header">
+                Please read the following sentence: <br>
+                {{{getSentence}}}
+            </div>
+
+            <div class="ui divider"></div>
+            {{> recorderHandler}}
+            <br>
+            <div class="ui blue button large {{#unless hasPreviousSentence}}disabled{{/unless}} js-prevStep">Previous</div>
+            <div class="ui green button large {{#unless getCurrRecording}}disabled{{/unless}} submitSentence">Save Sentence</div>
+            <div class="ui blue button large {{#unless hasNextSentence}}disabled{{/unless}} js-nextStep">Next</div>
+            <br>
+            {{> germanSamples sent_id=sentenceId}}
+            <br>
+            <div class="ui black button large home">Home</div>
+            <div>{{debug}}</div>
+        </div>
+</template>

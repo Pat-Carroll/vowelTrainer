@@ -7,7 +7,8 @@
   	<div class="ui container navButtons">
 		<button class="ui button setup {{#if hasSetup}} disabled {{/if}}" id="setup">Setup</button>
 		<button class="ui button calibrate {{#unless canCalibrate }} disabled {{/unless}} " id="calibrate" >Calibrate</button>
-		<button class="ui button vowelTrainer {{#unless canVowelTrain }}disabled{{/unless}}" id="vowelTrainer" >Vowel Trainer</button>
+        <button class="ui button test {{#unless canVowelTrain }} disabled {{/unless}} " id="test" >Test</button>
+        <button class="ui button vowelTrainer {{#unless canVowelTrain }}disabled{{/unless}}" id="vowelTrainer" >Vowel Trainer</button>
         <button class="ui button prog {{#unless canViewProgress }}disabled{{/unless}}" id="progress" >Progress</button>
 	</div>
 
