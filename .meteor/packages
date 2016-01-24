@@ -13,3 +13,10 @@ insecure
 cfs:filesystem
 cfs:standard-packages
 semantic:ui-css
+aramk:requirejs
+flowkey:numeric
+standard-minifiers
+meteorhacks:npm
+
+
+npm-container
