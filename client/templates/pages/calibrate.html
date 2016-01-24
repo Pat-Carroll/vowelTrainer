@@ -2,13 +2,13 @@
 
     <div class="ui basic segment" id="calibrateButtons" style="text-align: center">
         <div class="ui header">
-            Please read the following sentence: <br>
+            Lesen sie bitte das Wort: <br>
             {{{getSentence}}}
         </div>
 
         {{> recorderHandler}}
         <br>
-        <div class="ui green button large {{#unless getCurrRecording}}disabled{{/unless}} submitSentence">Save Sentence</div>
-        <div class="ui button green large {{#unless hasValidCalibrationSentence}}disabled{{/unless}} js-nextStep">Next</div>
+        <div class="ui green button large {{#unless getCurrRecording}}disabled{{/unless}} submitSentence">Speichern</div>
+        <div class="ui button green large {{#unless hasValidCalibrationSentence}}disabled{{/unless}} js-nextStep">Nächste</div>
     </div>
 </template>

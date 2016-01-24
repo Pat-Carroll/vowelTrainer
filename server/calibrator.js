@@ -51,6 +51,8 @@ Meteor.methods({
 
         }
 
+        console.log(targetVowels)
+
         var userCorners = [
             [targetVowels['a:'].f1_avg, targetVowels['a:'].f2_avg],
             [targetVowels['i:'].f1_avg, targetVowels['i:'].f2_avg],
@@ -83,30 +85,26 @@ Meteor.methods({
 
         var keys = Object.keys(remainingVowels);
 
-        var transformMatrix = new AffineTransformation(germanCorners, userCorners);
+        var nudged = Meteor.npmRequire('nudged');
 
-        console.log(transformMatrix);
+        //var nudged = new Nudgedapi ({version:'1.0.1'});
 
-        keys.forEach(function(key){
+        var nudgedPoints = Async.runSync(function(done){
 
-            var point = [remainingVowels[key].f1, remainingVowels[key].f2];
+            var trans = nudged.estimate('TSR', germanCorners, userCorners);
 
-            console.log(key, point);
+            keys.forEach(function (key) {
+                var point = remainingVowels[key];
+                transformedPoint = trans.transform([point.f1, point.f2]);
+                targetVowels[key] = {total: 0, f1_avg: transformedPoint[0], f2_avg: transformedPoint[1], f3_avg: 0};
+            });
 
-
-            var transformedPoint = transformMatrix.transform([point.f1, point.f2]);
-
-
-
-
-
-            console.log("transformend Point" + transformedPoint);
-
-
-            targetVowels[key] = {total:0, f1_avg: transformedPoint[0], f2_avg: transformedPoint[1], f3_avg:0}
-
-            //console.log(targetVowels[key]);
+            done (null, 1)
         });
+
+        console.log(nudgedPoints.result);
+
+        console.log(targetVowels);
 
 
 

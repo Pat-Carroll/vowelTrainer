@@ -27,24 +27,35 @@ Template.progress.events(
 )
 
 Template.progress.helpers({
-    getSelectedVowel: function(){return Session.get("selectedVowel")},
+    getSelectedVowel: function () {
+        return Session.get("selectedVowel")
+    },
 
-    drawGraph: function(vowel){
-        var personProfile =  PersonProfiles.findOne({owner: Meteor.userId()});
-        var sentences = SentenceProductions.find({owner: Meteor.userId(), phone: vowel, type: SentenceProductionsTypes.training},{sort:{timestamp: -1}});
+    getCurrentSentenceID: function() {
+        return Session.get("CurrentSentenceID");
+    },
+
+    drawGraph: function (vowel) {
+        var personProfile = PersonProfiles.findOne({owner: Meteor.userId()});
+        var sentenceProds = SentenceProductions.find({
+            owner: Meteor.userId(),
+            phone: vowel,
+            type: SentenceProductionsTypes.training
+        }, {sort: {timestamp: -1}});
         var dataF1F2Dist = [];
         var dataDurDist = [];
         var targeVowel = personProfile.targetVowels[vowel];
-        sentences.forEach(function(doc){
-            f1_f2_target_distance = Math.sqrt(Math.pow(targeVowel.f1_avg - doc.f1_avg,2)+Math.pow(targeVowel.f2_avg - doc.f2_avg,2));
+        sentenceProds.forEach(function (doc) {
+            f1_f2_target_distance = Math.sqrt(Math.pow(targeVowel.f1_avg - doc.f1_avg, 2) + Math.pow(targeVowel.f2_avg - doc.f2_avg, 2));
             // the 2300 is the calculated max distance diagonally across the vowel space
-            dataF1F2Dist.push({y:1 - f1_f2_target_distance/ 2300, id: doc._id});
+            dataF1F2Dist.push({y: 1 - f1_f2_target_distance / 2300, id: doc._id});
 
-            var duration = targeVowel.f3_avg - doc.f3_avg;
+            //console.log("rel phone length " + doc.relative_phone_length);
+            //console.log("target phone length " + Sentences.findOne({number: doc.sentenceId}).target_duration);
+            var duration = Math.abs(doc.relative_phone_length - Sentences.findOne({number: doc.sentenceId}).target_duration);
             // TODO replace f3 with duration value that is sane.
-                dataDurDist.push(1-duration/7000);
+            dataDurDist.push({y:1 -(duration / 100), id: doc._id});
         });
-
 
 
         $('#container_acoustic').highcharts({
@@ -53,17 +64,15 @@ Template.progress.helpers({
                 x: -20 //center
             },
 
-            xAxis: {
-
-            },
+            xAxis: {},
             yAxis: {
-                min:.5,
+                min: .5,
                 max: 1,
                 title: {
                     text: 'F1 & F2 distance from target'
                 },
                 plotLines: [{
-                    value:.5,
+                    value: .5,
                     width: 1,
                     color: '#808080'
                 }]
@@ -91,10 +100,7 @@ Template.progress.helpers({
                 name: 'acoustic distance from target',
                 data: dataF1F2Dist
             },
-            //    {
-            //    name: 'Duration distance from target',
-            //    data: dataDurDist
-            //}
+
             ]
         });
 
@@ -104,19 +110,17 @@ Template.progress.helpers({
                 x: -20 //center
             },
 
-            xAxis: {
-
-            },
+            xAxis: {},
             yAxis: {
-                min:.5,
+                min: 0,
                 max: 1,
                 title: {
-                    text: 'F1 & F2 distance from target'
+                    text: 'Duration Distance from Target'
                 },
                 plotLines: [{
-                    value:.5,
+                    value: 0,
                     width: 1,
-                    color: '#808080'
+                    color: 'black'
                 }]
             },
 
@@ -138,24 +142,22 @@ Template.progress.helpers({
                 verticalAlign: 'middle',
                 borderWidth: 0
             },
+
             series: [{
-                name: 'acoustic distance from target',
-                data: dataF1F2Dist
+                name: 'duration distance from target',
+                data: dataDurDist
             },
-                //    {
-                //    name: 'Duration distance from target',
-                //    data: dataDurDist
-                //}
             ]
         });
-    }
-});
 
+    }
+    });
 
 function onPointClick() {
     console.log(this);
 
     $('.playback-buttons').show();
+
 
     var sentence = SentenceProductions.findOne({_id: this.options.id});
     var au = $('.playUserAudio');
@@ -163,6 +165,7 @@ function onPointClick() {
     var url = audioFile.url();
     au.attr('src', url);
     au[0].play();
+    Session.set("CurrentSentenceID", sentence.sentenceId);
 
 
 }

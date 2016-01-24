@@ -20,7 +20,7 @@ Meteor.methods({
 
                 var audioFileName = "userAudio-" + fileObj._id + "-undefined";
                 var sentencePath = publicPath + "Sentences/sentence" + sentenceNum + ".txt";
-                var tempPath = baseAppPath + "/.temp/" + Meteor.userId();
+                var tempPath = baseAppPath + "/.temp/" + fileObj._id;
 
                 //console.log("AudioFilePath: " +audioFilePath + audioFileName);
                 //console.log("Sentencepath: " + sentencePath);

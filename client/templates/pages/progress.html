@@ -4,11 +4,12 @@ This is the progress template
     <div id="container_duration" style="min-width: 310px; height: 250px; margin: 0 auto"></div>
 
     {{drawGraph getSelectedVowel}}
-    <div class="ui button js-select-vowel" value="a:">a</div>
-    <div class="ui button js-select-vowel" value="i:">i</div>
-    <div class="ui button js-select-vowel" value="u:">u</div>
-    <div class="ui button js-select-vowel" value="e:">e</div>
-    <div class="ui button js-select-vowel" value="o:">o</div>
+    <div class="ui button js-select-vowel" value="a:">a:</div>
+    <div class="ui button js-select-vowel" value="a">a</div>
+    <div class="ui button js-select-vowel" value="i:">i:</div>
+    <div class="ui button js-select-vowel" value="I:">I</div>
+    <div class="ui button js-select-vowel" value="o:">o:</div>
+    <div class="ui button js-select-vowel" value="O">O</div>
 
     <!--<div class="ui buttons">-->
         <!--<button class="ui button selected js-select-acoustic">Acoustic</button>-->
@@ -16,10 +17,10 @@ This is the progress template
         <!--<button class="ui button js-select-duration">Duration</button>-->
     <!--</div>-->
 
-    <div class="ui hidden playback-buttons">
-        <div class="ui green button playUser">Play user audio
+    <div class="ui playback-buttons">
+
         <audio class="ui hidden playUserAudio"></audio>
-        </div>
-        {{>germanSamples sent_id=sentenceId}}
+
+        {{>germanSamples sent_id=getCurrentSentenceID}}
     </div>
 </template>

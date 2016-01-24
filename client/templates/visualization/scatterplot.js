@@ -36,9 +36,20 @@ Template.scatterplot.helpers({
         var sentence = Sentences.findOne({number: sentenceID});
         var targeVow = personProfile.targetVowels[sentence.focus_vowel];
         var nearbyVowel = personProfile.targetVowels[sentence.nearby_vowel];
-        var vowel_target = [{x: targeVow.f2_avg, y: targeVow.f1_avg, z: 25, name:sentence.focus_vowel}];
+
+        var targetDuration = sentence.target_duration;
+        var nearbyTargetDuration;
+
+        if (sentence.number % 2) {
+            nearbyTargetDuration = Sentences.findOne({number: sentenceID + 1}).target_duration;
+        }
+        else {
+            nearbyTargetDuration = Sentences.findOne({number: sentenceID - 1}).target_duration;
+        }
+
+        var vowel_target = [{x: targeVow.f2_avg, y: targeVow.f1_avg, z: targetDuration, name:sentence.focus_vowel}];
         //TODO get relative duration values from the thing
-        var nearby_vowel_target = [{x: nearbyVowel.f2_avg, y:nearbyVowel.f1_avg, z: 30, name:sentence.nearby_vowel}];
+        var nearby_vowel_target = [{x: nearbyVowel.f2_avg, y:nearbyVowel.f1_avg, z: nearbyTargetDuration, name:sentence.nearby_vowel}];
 
 
 
@@ -58,10 +69,10 @@ Template.scatterplot.helpers({
 
 
         var sample = SentenceProductions.findOne({
-            type: SentenceProductionsTypes.samples,
-            owner: Session.get("SeclectedGerman"),
+            //type: SentenceProductionsTypes.samples,
+            owner: Session.get("SelectedGerman"),
             sentenceId: sentenceID,
-            timestamp: {$gt: last_visited}
+            //timestamp: {$gt: last_visited}
         }, {sort: {timestamp: -1}});
 
         var vowel_productions_germans = [];
@@ -146,7 +157,7 @@ Template.scatterplot.helpers({
             },
                 {
                     name: "Nearby vowel",
-                    data: vowel_target, // TODO implement nearby vowel target.
+                    data: nearby_vowel_target, // TODO implement nearby vowel target.
                     marker: {
                         fillColor: {
                             radialGradient: {cx: 0.4, cy: 0.3, r: 0.7},

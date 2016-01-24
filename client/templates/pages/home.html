@@ -1,43 +1,28 @@
 <template name="home">
-  <h2>Welcome to the homepage!</h2>
+
+    <div class="ui basic segment">
+    <h2>Willkommen auf der Homepage!</h2>
 
 
   {{#if currentUser}}
-  	<h3>You are logged in</h3>
+  	<h3>Du bist eingeloggt!</h3>
   	<div class="ui container navButtons">
 		<button class="ui button setup {{#if hasSetup}} disabled {{/if}}" id="setup">Setup</button>
-		<button class="ui button calibrate {{#unless canCalibrate }} disabled {{/unless}} " id="calibrate" >Calibrate</button>
+		<button class="ui button calibrate {{#unless canCalibrate }} disabled {{/unless}} " id="calibrate" >Kalibrierung</button>
         <button class="ui button test {{#unless canVowelTrain }} disabled {{/unless}} " id="test" >Test</button>
-        <button class="ui button vowelTrainer {{#unless canVowelTrain }}disabled{{/unless}}" id="vowelTrainer" >Vowel Trainer</button>
+        <button class="ui button vowelTrainer {{#unless canVowelTrain }}disabled{{/unless}}" id="vowelTrainer" >Vokal Trainer</button>
         <button class="ui button prog {{#unless canViewProgress }}disabled{{/unless}}" id="progress" >Progress</button>
 	</div>
 
-	<div>
-        <!--Sorry about the if thing but there is no else if -.- -->
-		{{#if canCalibrate}}
-            Please calibrate the system
-           {{else }}
-            {{#if canViewProgress}}
-                Please train vowels now!
-            {{else }}
-                {{#if canCalibrate}}
-                    Please proceed to the results
-                {{else }}
-                    Please setup the System first!
-                {{/if}}
-            {{/if}}
-            {{/if}}
 
-		<!-- TODO set up a warning system of messages to guide the user in setup -->
-	</div>
 
 
   {{else}}
-  	<h3>Please log in to the site!</h3>
+  	<h3>Bitte Einloggen!</h3>
 
 
   {{/if}}
 
-
+    </div>
   
 </template>

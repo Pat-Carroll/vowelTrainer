@@ -8,7 +8,7 @@ Template.calibrate.helpers({
         return SentenceProductions.findOne({owner: Meteor.userId(), sentenceId: this.sentenceId});
     },
     getSentence: function () {
-        return Sentences.findOne({number: this.sentenceId}).text;
+        return Sentences.findOne({number: this.sentenceId}).display_text;
     },
 
 });

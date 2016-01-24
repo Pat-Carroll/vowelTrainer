@@ -12,7 +12,7 @@ Template.test.helpers({
         return Session.get("currentRecording");
     },
     getSentence: function () {
-        return Sentences.findOne({number: this.sentenceId}).text;
+        return Sentences.findOne({number: this.sentenceId}).display_text;
     },
     debug: function () {
         console.log("this context " + JSON.stringify(this));

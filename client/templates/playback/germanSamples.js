@@ -17,7 +17,7 @@ Template.germanSamples.helpers({
         var germanUsers = PersonProfiles.find({
             motherLang: "Deutsch"
         });
-        console.log(germanUsers.fetch());
+        //console.log(germanUsers.fetch());
         sentId = sent_id;
         return germanUsers;
     },
@@ -30,8 +30,8 @@ Template.germanSamples.helpers({
 
     getAudioId: function (parentContext, owner) {
 
-        console.log(parentContext.sent_id);
-        console.log(owner);
+        //console.log(parentContext.sent_id);
+        //console.log(owner);
         var sampleProduction = SentenceProductions.findOne(
             {
                 owner: owner,
@@ -68,7 +68,12 @@ Template.germanSamples.helpers({
 Template.germanSamples.events({
    'click .GermanSample' : function (ev){
 
+
+
        var audioId= $(ev.target)[0].id;
+
+       var germanSentence = SentenceProductions.findOne({recordingId:audioId});
+       Session.set('SelectedGerman', germanSentence.owner);
 
        var au = $('#GermanAudio');
        var audioFile = UserAudio.findOne({_id: audioId});
