@@ -1,7 +1,20 @@
 <template name="scatterplot">
 
     <div id="container" style="min-width: 310px; max-width: 600px; height: 400px; margin: 0 auto;"></div>
-    {{displayPlot sent_id}}
+
+    {{#if isHigh sent_id}}
+        {{displayPlot_high sent_id}}
+    {{/if}}
+
+
+    {{#if isLow sent_id}}
+        {{displayPlot_low sent_id}}
+    {{/if}}
+
+    {{#if isBack sent_id}}
+        {{displayPlot_back sent_id}}
+    {{/if}}
+
     <div class="ui yellow button refresh">clear visualization</div>
     <audio class="ui hidden" id="datapointAudio"></audio>
 </template>
