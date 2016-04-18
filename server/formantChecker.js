@@ -14,9 +14,9 @@ var formantValues = {
     "oe": {f1Min:244.2,	f1Max:817.6,	f2Min:825.6,	f2Max:2618,	    f3Min:1272.6,	f3Max:3859.8},
     "a:": {f1Min:342,	f1Max:1232,	    f2Min:699.6,	f2Max:2014.6,	f3Min:1389.6,	f3Max:4117.4},
     "a":  {f1Min:317.4,	f1Max:1173.2,	f2Min:734.4,	f2Max:2216.2,	f3Min:90.2,	    f3Max:4176.2},
-    "o:": {f1Min:211.2,	f1Max:681.8,	f2Min:464.4,	f2Max:1542.8,	f3Min:1361.4,	f3Max:4186},
+    "o:": {f1Min:211.2,	f1Max:850,  	f2Min:464.4,	f2Max:1542.8,	f3Min:1361.4,	f3Max:4186}, // adjusted F1 max for Laura
     "O":  {f1Min:273.92,f1Max:924,	    f2Min:595.2,	f2Max:1790.6, 	f3Min:1377,     f3Max:4151},
-    "u:": {f1Min:169.8,	f1Max:567,	    f2Min:501,	    f2Max:1708,	    f3Min:1348.2,	f3Max:4027.8},
+    "u:": {f1Min:169.8,	f1Max:567,	    f2Min:501,	    f2Max:2500,	    f3Min:1348.2,	f3Max:4027.8}, // adjusted F2 max for Christine
     "U":  {f1Min:199.2,	f1Max:705.6,	f2Min:579.6,	f2Max:1822.8,	f3Min:1335, 	f3Max:4144},
 
 };
